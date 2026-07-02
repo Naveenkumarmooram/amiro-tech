@@ -6,10 +6,9 @@ A production-ready foundation for a premium software and AI solutions website bu
 
 - src/app: application entry points and top-level app composition
 - src/components: reusable UI components
-- src/layouts: page layout wrappers and shared shell structures
-- src/constants: shared configuration values
-- src/data: static content and mock data
-- src/hooks: custom React hooks
+- src/data: structured website content
+- src/pages: page-level route components
+- src/routes: route selection and metadata handling
 - src/styles: global theme and base styles
 
 ## Scripts
