@@ -1,37 +1,56 @@
 import { serviceGroups } from '../data/services'
 import { Button, Card, Container, Grid, Section, SectionHeader, Stack } from '../components/common'
+import { ServiceGroupVisual, ServicesHeroVisual } from '../components/visuals'
+
+const serviceGroupVisuals = {
+  'Product & Platform Engineering': 'platform',
+  'Intelligence & Automation': 'ai',
+  'Integration & Insight': 'integration',
+} as const
 
 export function ServicesPage() {
   return (
     <>
       <Section className="services-page-hero" spacing="spacious">
         <Container>
-          <Stack className="services-page-hero__content" gap="xl">
-            <Stack gap="lg">
-              <p className="services-page-hero__eyebrow">Services</p>
-              <h1 className="services-page-hero__title">
-                Software &amp; AI Services for Business Growth
-              </h1>
-              <p className="services-page-hero__description">
-                We help businesses build custom applications, AI-powered systems, Voice AI
-                agents, automation workflows, and scalable digital platforms.
-              </p>
+          <div className="inner-hero-layout services-page-hero__content">
+            <Stack gap="xl">
+              <Stack gap="lg">
+                <p className="services-page-hero__eyebrow">Services</p>
+                <h1 className="services-page-hero__title">
+                  Software &amp; AI Services for Business Growth
+                </h1>
+                <p className="services-page-hero__description">
+                  We help businesses build custom applications, AI-powered systems, Voice AI
+                  agents, automation workflows, and scalable digital platforms.
+                </p>
+              </Stack>
+              <div className="home-actions">
+                <Button href="/contact?type=consultation" size="lg">
+                  Book a Strategy Call
+                </Button>
+                <Button href="#service-areas" size="lg" variant="secondary">
+                  Explore Service Areas
+                </Button>
+              </div>
             </Stack>
-            <div className="home-actions">
-              <Button size="lg">Book a Strategy Call</Button>
-              <Button size="lg" variant="secondary">
-                Explore Service Areas
-              </Button>
-            </div>
-          </Stack>
+            <ServicesHeroVisual />
+          </div>
         </Container>
       </Section>
 
       {serviceGroups.map((group) => (
-        <Section className="services-page-group" key={group.title}>
+        <Section
+          className="services-page-group"
+          id={group.title === 'Product & Platform Engineering' ? 'service-areas' : undefined}
+          key={group.title}
+        >
           <Container>
             <Stack gap="xl">
-              <SectionHeader description={group.description} eyebrow="Service group" title={group.title} />
+              <div className="services-page-group__intro">
+                <SectionHeader description={group.description} eyebrow="Service group" title={group.title} />
+                <ServiceGroupVisual type={serviceGroupVisuals[group.title as keyof typeof serviceGroupVisuals]} />
+              </div>
               <Grid columns={group.services.length === 4 ? 4 : 3}>
                 {group.services.map((service) => (
                   <Card
@@ -56,7 +75,12 @@ export function ServicesPage() {
                           <p>{service.outcome}</p>
                         </div>
                       </Stack>
-                      <Button className="services-page-card__cta" size="sm" variant="secondary">
+                      <Button
+                        className="services-page-card__cta"
+                        href={service.href}
+                        size="sm"
+                        variant="secondary"
+                      >
                         {service.cta}
                       </Button>
                     </Stack>

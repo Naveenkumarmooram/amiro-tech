@@ -1,4 +1,5 @@
 import { Card, Container, Grid, Section, SectionHeader, Stack } from '../common'
+import { CapabilityMiniVisual } from '../visuals'
 
 type ServicesOverviewSectionProps = {
   className?: string
@@ -11,6 +12,7 @@ const services = [
       'Custom web applications, enterprise systems, SaaS platforms, portals, dashboards, and internal business tools.',
     tags: ['Web Apps', 'SaaS', 'Dashboards'],
     title: 'Software Engineering',
+    visual: 'software',
   },
   {
     accent: 'cyan',
@@ -18,6 +20,7 @@ const services = [
       'Generative AI applications, AI assistants, AI agents, document intelligence, and intelligent workflows.',
     tags: ['Gen AI', 'Agents', 'Documents'],
     title: 'AI Solutions',
+    visual: 'ai',
   },
   {
     accent: 'cyan',
@@ -25,6 +28,7 @@ const services = [
       'Voice agents, AI receptionists, support bots, appointment booking agents, and voice-enabled workflows.',
     tags: ['Voice Agents', 'Support Bots', 'Booking'],
     title: 'Voice AI',
+    visual: 'voice',
   },
   {
     accent: 'gold',
@@ -32,6 +36,7 @@ const services = [
       'Workflow automation, reporting automation, API integrations, system connections, and process digitization.',
     tags: ['Automation', 'APIs', 'Reporting'],
     title: 'Automation & Integration',
+    visual: 'automation',
   },
 ]
 
@@ -53,7 +58,10 @@ export function ServicesOverviewSection({ className }: ServicesOverviewSectionPr
                 key={service.title}
               >
                 <Stack gap="lg">
-                  <span className="services-overview__marker" />
+                  <div className="services-overview__visual-row">
+                    <span className="services-overview__marker" />
+                    <CapabilityMiniVisual accent={service.accent as 'cyan' | 'gold'} type={service.visual as 'ai' | 'automation' | 'software' | 'voice'} />
+                  </div>
                   <Stack gap="sm">
                     <h3 className="services-overview__title">{service.title}</h3>
                     <p className="services-overview__text">{service.description}</p>

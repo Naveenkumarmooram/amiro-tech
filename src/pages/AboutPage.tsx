@@ -1,4 +1,5 @@
 import { Button, Card, Container, Grid, Section, SectionHeader, Stack } from '../components/common'
+import { AboutHeroVisual, PartnershipJourneyVisual } from '../components/visuals'
 
 const aboutSections = [
   {
@@ -40,25 +41,30 @@ export function AboutPage() {
     <>
       <Section className="page-hero" spacing="spacious">
         <Container>
-          <Stack className="page-hero__content" gap="xl">
-            <Stack gap="lg">
-              <p className="page-hero__eyebrow">About Amiro Tech</p>
-              <h1 className="page-hero__title">
-                Building Software &amp; AI Solutions for Real Business Problems
-              </h1>
-              <p className="page-hero__description">
-                Amiro Tech Solutions helps businesses move from manual, disconnected
-                processes to intelligent digital systems through software engineering, AI,
-                automation, and practical digital transformation.
-              </p>
+          <div className="inner-hero-layout page-hero__content">
+            <Stack gap="xl">
+              <Stack gap="lg">
+                <p className="page-hero__eyebrow">About Amiro Tech</p>
+                <h1 className="page-hero__title">
+                  Building Software &amp; AI Solutions for Real Business Problems
+                </h1>
+                <p className="page-hero__description">
+                  Amiro Tech Solutions helps businesses move from manual, disconnected
+                  processes to intelligent digital systems through software engineering, AI,
+                  automation, and practical digital transformation.
+                </p>
+              </Stack>
+              <div className="home-actions">
+                <Button href="/contact?type=consultation" size="lg">
+                  Discuss Your Goals
+                </Button>
+                <Button href="/services" size="lg" variant="secondary">
+                  Explore Services
+                </Button>
+              </div>
             </Stack>
-            <div className="home-actions">
-              <Button size="lg">Discuss Your Goals</Button>
-              <Button size="lg" variant="secondary">
-                Explore Services
-              </Button>
-            </div>
-          </Stack>
+            <AboutHeroVisual />
+          </div>
         </Container>
       </Section>
 
@@ -70,6 +76,9 @@ export function AboutPage() {
               eyebrow="Company"
               title="A practical partner for digital operations."
             />
+            <Card className="about-journey-card" padding="spacious">
+              <PartnershipJourneyVisual />
+            </Card>
             <Grid columns={3}>
               {aboutSections.map((section, index) => (
                 <Card className="page-card" key={section.title}>
@@ -95,8 +104,10 @@ export function AboutPage() {
                 title="Strategy, execution, and support in one delivery mindset."
               />
               <div className="home-actions">
-                <Button>Start a Conversation</Button>
-                <Button variant="secondary">View Our Process</Button>
+                <Button href="/contact?type=consultation">Start a Conversation</Button>
+                <Button href="/process" variant="secondary">
+                  View Our Process
+                </Button>
               </div>
             </Stack>
             <Grid columns={2} gap="sm">

@@ -1,6 +1,7 @@
 export type ServiceItem = {
   accent?: 'gold' | 'cyan'
   cta: string
+  href: string
   outcome: string
   problem: string
   solution: string
@@ -21,6 +22,7 @@ export const serviceGroups: ServiceGroup[] = [
     services: [
       {
         cta: 'Discuss custom software',
+        href: '/contact?type=custom-software',
         outcome: 'Better operational control, workflow fit, and long-term scalability.',
         problem: 'Off-the-shelf software does not match how the business actually operates.',
         solution:
@@ -29,6 +31,7 @@ export const serviceGroups: ServiceGroup[] = [
       },
       {
         cta: 'Plan an enterprise app',
+        href: '/contact?type=enterprise-application',
         outcome: 'Centralized tools that improve consistency, access, and daily execution.',
         problem: 'Teams rely on scattered tools, manual handoffs, and disconnected records.',
         solution:
@@ -37,6 +40,7 @@ export const serviceGroups: ServiceGroup[] = [
       },
       {
         cta: 'Explore SaaS development',
+        href: '/contact?type=saas-platform',
         outcome: 'A scalable product foundation ready for users, growth, and iteration.',
         problem: 'A product idea needs to become a dependable platform, not just a prototype.',
         solution:
@@ -53,6 +57,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         accent: 'cyan',
         cta: 'Explore AI opportunities',
+        href: '/contact?type=ai-solution',
         outcome: 'Faster knowledge access, smarter workflows, and better team productivity.',
         problem: 'Teams want practical AI adoption but need it aligned with real operations.',
         solution:
@@ -62,6 +67,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         accent: 'cyan',
         cta: 'Build a Voice AI agent',
+        href: '/contact?type=voice-ai',
         outcome: 'More responsive communication and lower pressure on service teams.',
         problem: 'Calls, inquiries, and repetitive conversations consume valuable team time.',
         solution:
@@ -71,6 +77,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         accent: 'cyan',
         cta: 'Design agentic workflows',
+        href: '/contact?type=ai-agent',
         outcome: 'Repeatable digital execution for research, routing, support, and operations.',
         problem: 'Complex tasks need coordinated steps across tools, data, and decisions.',
         solution:
@@ -79,6 +86,7 @@ export const serviceGroups: ServiceGroup[] = [
       },
       {
         cta: 'Automate a workflow',
+        href: '/contact?type=automation',
         outcome: 'Lower manual effort, fewer errors, and faster operational cycles.',
         problem: 'Repetitive manual work slows delivery and creates avoidable mistakes.',
         solution:
@@ -94,6 +102,7 @@ export const serviceGroups: ServiceGroup[] = [
     services: [
       {
         cta: 'Connect business systems',
+        href: '/contact?type=system-integration',
         outcome: 'Cleaner data flow and fewer gaps between teams, tools, and processes.',
         problem: 'Important systems do not communicate, forcing teams to duplicate work.',
         solution:
@@ -102,6 +111,7 @@ export const serviceGroups: ServiceGroup[] = [
       },
       {
         cta: 'Create better visibility',
+        href: '/contact?type=dashboard-reporting',
         outcome: 'Clearer reporting, faster decisions, and better operational awareness.',
         problem: 'Leaders lack real-time visibility into performance, work, or operational status.',
         solution:
@@ -110,6 +120,7 @@ export const serviceGroups: ServiceGroup[] = [
       },
       {
         cta: 'Modernize operations',
+        href: '/contact?type=digital-transformation',
         outcome: 'More mature digital operations that can scale with the business.',
         problem: 'Legacy processes and disconnected tools limit growth and adaptability.',
         solution:

@@ -6,6 +6,7 @@ import {
   ContactPage,
   HomePage,
   ProcessPage,
+  ProductsPage,
   ServicesPage,
 } from '../pages'
 
@@ -25,6 +26,13 @@ const routes = [
       'Explore Amiro Tech services in custom software, enterprise applications, AI solutions, Voice AI, automation, dashboards, and integrations.',
     path: '/services',
     title: 'Services | Amiro Tech Solutions',
+  },
+  {
+    Component: ProductsPage,
+    description:
+      'Explore future Amiro Tech productized software, AI, Voice AI, and automation solution concepts for business operations.',
+    path: '/products',
+    title: 'Products | Amiro Tech Solutions',
   },
   {
     Component: AboutPage,

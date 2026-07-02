@@ -57,7 +57,7 @@ export function CaseStudiesPage() {
                   </Card>
                 ))}
               </Grid>
-              <Button>Discuss a Similar Project</Button>
+              <Button href="/contact?type=similar-project">Discuss a Similar Project</Button>
             </Stack>
             <Card className="case-showcase__visual" padding="compact">
               <div className="case-dashboard">

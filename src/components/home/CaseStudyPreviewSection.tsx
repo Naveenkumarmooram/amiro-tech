@@ -18,6 +18,8 @@ const metrics = [
   'Centralized Records',
 ]
 
+const dashboardModules = ['Inventory', 'Calibration', 'Compliance', 'Audit', 'Reports']
+
 export function CaseStudyPreviewSection({ className }: CaseStudyPreviewSectionProps) {
   return (
     <Section className={['featured-work', className].filter(Boolean).join(' ')} tone="soft">
@@ -37,21 +39,22 @@ export function CaseStudyPreviewSection({ className }: CaseStudyPreviewSectionPr
                 </Card>
               ))}
             </Grid>
-            <Button className="featured-work__cta">Discuss a Similar Project</Button>
+            <Button className="featured-work__cta" href="/contact?type=similar-project">
+              Discuss a Similar Project
+            </Button>
           </Stack>
 
           <Card className="featured-work__dashboard" padding="compact">
             <div className="featured-dashboard" aria-label="Conceptual inventory dashboard preview">
               <aside className="featured-dashboard__sidebar">
-                <span />
-                <span />
-                <span />
-                <span />
+                {dashboardModules.map((module) => (
+                  <span key={module}>{module.slice(0, 1)}</span>
+                ))}
               </aside>
               <div className="featured-dashboard__main">
                 <div className="featured-dashboard__topbar">
-                  <span />
-                  <span />
+                  <p>IMS Control Center</p>
+                  <span>Audit Ready</span>
                 </div>
                 <Grid columns={2} gap="sm">
                   {metrics.map((metric) => (
@@ -63,6 +66,7 @@ export function CaseStudyPreviewSection({ className }: CaseStudyPreviewSectionPr
                 </Grid>
                 <div className="featured-dashboard__content">
                   <div className="featured-dashboard__chart">
+                    <p>Stock Visibility</p>
                     <span />
                     <span />
                     <span />
@@ -70,10 +74,28 @@ export function CaseStudyPreviewSection({ className }: CaseStudyPreviewSectionPr
                     <span />
                   </div>
                   <div className="featured-dashboard__panel">
-                    <p>Audit Status</p>
+                    <p>Calibration Queue</p>
+                    <span>Due</span>
+                    <span>Scheduled</span>
+                    <span>Cleared</span>
+                  </div>
+                </div>
+                <div className="featured-dashboard__traceability">
+                  <span>Equipment ID</span>
+                  <span>Batch</span>
+                  <span>Certificate</span>
+                  <span>Audit Trail</span>
+                </div>
+                <div className="featured-dashboard__equipment">
+                  <div>
                     <span />
+                    <p>Equipment</p>
+                    <strong>128 tracked</strong>
+                  </div>
+                  <div>
                     <span />
-                    <span />
+                    <p>Reports</p>
+                    <strong>Live export</strong>
                   </div>
                 </div>
                 <div className="featured-dashboard__compliance">

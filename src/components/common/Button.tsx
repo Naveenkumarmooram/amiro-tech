@@ -3,18 +3,30 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 type ButtonSize = 'sm' | 'md' | 'lg'
 type ButtonVariant = 'primary' | 'secondary' | 'ghost'
 
-type ButtonProps = {
+type ButtonBaseProps = {
   children?: ReactNode
   className?: string
   size?: ButtonSize
   variant?: ButtonVariant
-} & ComponentPropsWithoutRef<'button'>
+}
+
+type ButtonAsButtonProps = ButtonBaseProps &
+  ComponentPropsWithoutRef<'button'> & {
+    href?: undefined
+  }
+
+type ButtonAsAnchorProps = ButtonBaseProps &
+  ComponentPropsWithoutRef<'a'> & {
+    href: string
+  }
+
+type ButtonProps = ButtonAsButtonProps | ButtonAsAnchorProps
 
 export function Button({
   children,
   className,
+  href,
   size = 'md',
-  type = 'button',
   variant = 'primary',
   ...props
 }: ButtonProps) {
@@ -27,8 +39,18 @@ export function Button({
     .filter(Boolean)
     .join(' ')
 
+  if (href) {
+    return (
+      <a className={classes} href={href} {...(props as ComponentPropsWithoutRef<'a'>)}>
+        {children}
+      </a>
+    )
+  }
+
+  const { type = 'button', ...buttonProps } = props as ComponentPropsWithoutRef<'button'>
+
   return (
-    <button className={classes} type={type} {...props}>
+    <button className={classes} type={type} {...buttonProps}>
       {children}
     </button>
   )

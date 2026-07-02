@@ -34,8 +34,10 @@ export function HeroSection({ className }: HeroSectionProps) {
               </p>
             </Stack>
             <div className="home-actions">
-              <Button size="lg">Book a Strategy Call</Button>
-              <Button size="lg" variant="secondary">
+              <Button href="/contact?type=consultation" size="lg">
+                Book a Strategy Call
+              </Button>
+              <Button href="/services" size="lg" variant="secondary">
                 Explore Services
               </Button>
             </div>

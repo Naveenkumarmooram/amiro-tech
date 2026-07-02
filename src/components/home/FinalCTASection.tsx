@@ -21,8 +21,10 @@ export function FinalCTASection({ className }: FinalCTASectionProps) {
               </p>
             </Stack>
             <div className="home-actions">
-              <Button size="lg">Book a Strategy Call</Button>
-              <Button size="lg" variant="secondary">
+              <Button href="/contact?type=consultation" size="lg">
+                Book a Strategy Call
+              </Button>
+              <Button href="/contact" size="lg" variant="secondary">
                 Contact Us
               </Button>
             </div>

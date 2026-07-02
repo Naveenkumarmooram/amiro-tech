@@ -48,8 +48,10 @@ export function ProcessPage() {
               </p>
             </Stack>
             <div className="home-actions">
-              <Button size="lg">Start Discovery</Button>
-              <Button size="lg" variant="secondary">
+              <Button href="/contact?type=consultation" size="lg">
+                Start Discovery
+              </Button>
+              <Button href="/services" size="lg" variant="secondary">
                 View Services
               </Button>
             </div>
@@ -101,8 +103,10 @@ export function ProcessPage() {
               ))}
             </Grid>
             <div className="home-actions">
-              <Button>Discuss Your Project</Button>
-              <Button variant="secondary">Contact Us</Button>
+              <Button href="/contact?type=consultation">Discuss Your Project</Button>
+              <Button href="/contact" variant="secondary">
+                Contact Us
+              </Button>
             </div>
           </Stack>
         </Container>

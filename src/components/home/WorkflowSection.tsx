@@ -5,12 +5,12 @@ type WorkflowSectionProps = {
 }
 
 const workflowSteps = [
-  { accent: 'gold', label: 'Business Process' },
-  { accent: 'gold', label: 'Software Platform' },
-  { accent: 'cyan', label: 'AI Layer' },
-  { accent: 'cyan', label: 'Voice AI' },
-  { accent: 'gold', label: 'Automation' },
-  { accent: 'gold', label: 'Insights' },
+  { accent: 'gold', detail: 'Manual work', label: 'Business Process' },
+  { accent: 'gold', detail: 'Core system', label: 'Software Platform' },
+  { accent: 'cyan', detail: 'Decision support', label: 'AI Layer' },
+  { accent: 'cyan', detail: 'Call workflows', label: 'Voice AI' },
+  { accent: 'gold', detail: 'Task routing', label: 'Automation' },
+  { accent: 'gold', detail: 'Live visibility', label: 'Insights' },
 ]
 
 export function WorkflowSection({ className }: WorkflowSectionProps) {
@@ -24,6 +24,7 @@ export function WorkflowSection({ className }: WorkflowSectionProps) {
             title="From Manual Processes to Intelligent Digital Systems"
           />
           <div className="workflow-section__flow" aria-label="Business process to insights workflow">
+            <span aria-hidden="true" className="workflow-section__data-flow" />
             {workflowSteps.map((step) => (
               <Card
                 className={`workflow-section__node workflow-section__node--${step.accent}`}
@@ -31,7 +32,10 @@ export function WorkflowSection({ className }: WorkflowSectionProps) {
                 padding="compact"
               >
                 <span className="workflow-section__dot" />
-                <p>{step.label}</p>
+                <div>
+                  <p>{step.label}</p>
+                  <span>{step.detail}</span>
+                </div>
               </Card>
             ))}
           </div>
