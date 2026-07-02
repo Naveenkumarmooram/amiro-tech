@@ -1,0 +1,6 @@
+export { AboutPage } from './AboutPage'
+export { CaseStudiesPage } from './CaseStudiesPage'
+export { ContactPage } from './ContactPage'
+export { HomePage } from './HomePage'
+export { ProcessPage } from './ProcessPage'
+export { ServicesPage } from './ServicesPage'
