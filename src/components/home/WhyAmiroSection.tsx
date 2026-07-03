@@ -60,15 +60,15 @@ export function WhyAmiroSection({ className }: WhyAmiroSectionProps) {
             </div>
             <Grid columns={3}>
               {reasons.map((reason) => (
-              <Card className="why-amiro__card" interactive key={reason.title}>
-                <Stack gap="md">
-                  <span className="why-amiro__marker">{reason.marker}</span>
-                  <Stack gap="sm">
-                    <h3 className="why-amiro__title">{reason.title}</h3>
-                    <p className="why-amiro__text">{reason.description}</p>
+                <Card className="why-amiro__card" interactive key={reason.title}>
+                  <Stack gap="md">
+                    <span className="why-amiro__marker">{reason.marker}</span>
+                    <Stack gap="sm">
+                      <h3 className="why-amiro__title">{reason.title}</h3>
+                      <p className="why-amiro__text">{reason.description}</p>
+                    </Stack>
                   </Stack>
-                </Stack>
-              </Card>
+                </Card>
               ))}
             </Grid>
           </div>

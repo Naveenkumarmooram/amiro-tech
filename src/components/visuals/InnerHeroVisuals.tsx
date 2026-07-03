@@ -7,6 +7,8 @@ const productCards = [
 ]
 const aboutSteps = ['Understand', 'Strategy', 'Design', 'Build', 'Support']
 const contactSteps = ['Inquiry', 'Demo', 'Architecture', 'Build plan']
+const deliverySteps = ['Discover', 'Design', 'Architect', 'Build', 'Launch']
+const caseModules = ['Inventory', 'Calibration', 'Audit', 'Reports']
 
 export function ServicesHeroVisual() {
   return (
@@ -136,6 +138,67 @@ export function ContactHeroVisual() {
           <strong>24h</strong>
           <span>Response target</span>
         </div>
+      </div>
+    </div>
+  )
+}
+
+export function ProcessHeroVisual() {
+  return (
+    <div aria-hidden="true" className="inner-hero-visual inner-hero-visual--process">
+      <div className="inner-hero-visual__grid" />
+      <div className="hero-scene hero-scene--process">
+        <div className="hero-scene__delivery-platform">
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="hero-scene__delivery-core">
+          <span>Delivery Model</span>
+          <strong>Clear path from problem to platform</strong>
+        </div>
+        <div className="hero-scene__delivery-steps">
+          {deliverySteps.map((step, index) => (
+            <span key={step}>
+              <i>{String(index + 1).padStart(2, '0')}</i>
+              {step}
+            </span>
+          ))}
+        </div>
+        <span className="hero-scene__suite-line hero-scene__suite-line--one" />
+      </div>
+    </div>
+  )
+}
+
+export function CaseStudyHeroVisual() {
+  return (
+    <div aria-hidden="true" className="inner-hero-visual inner-hero-visual--case">
+      <div className="inner-hero-visual__grid" />
+      <div className="hero-scene hero-scene--case">
+        <div className="hero-scene__case-dashboard">
+          <div className="hero-scene__case-topbar">
+            <span />
+            <strong>IMS Dashboard</strong>
+          </div>
+          <div className="hero-scene__case-metrics">
+            <span>Traceability</span>
+            <span>Audit Ready</span>
+            <span>Compliance</span>
+          </div>
+          <div className="hero-scene__case-chart">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+        </div>
+        <div className="hero-scene__case-modules">
+          {caseModules.map((module) => (
+            <span key={module}>{module}</span>
+          ))}
+        </div>
+        <div className="hero-scene__case-ring" />
       </div>
     </div>
   )

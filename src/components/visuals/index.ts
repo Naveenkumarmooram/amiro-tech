@@ -1,7 +1,9 @@
 export { HeroVisual } from './HeroVisual'
 export {
   AboutHeroVisual,
+  CaseStudyHeroVisual,
   ContactHeroVisual,
+  ProcessHeroVisual,
   ProductsHeroVisual,
   ServicesHeroVisual,
 } from './InnerHeroVisuals'

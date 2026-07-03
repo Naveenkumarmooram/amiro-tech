@@ -1,4 +1,5 @@
 import { Button, Card, Container, Grid, Section, SectionHeader, Stack } from '../components/common'
+import { ProcessHeroVisual } from '../components/visuals'
 
 const deliverySteps = [
   {
@@ -38,24 +39,27 @@ export function ProcessPage() {
     <>
       <Section className="page-hero" spacing="spacious">
         <Container>
-          <Stack className="page-hero__content" gap="xl">
-            <Stack gap="lg">
-              <p className="page-hero__eyebrow">Process</p>
-              <h1 className="page-hero__title">A Clear Delivery Model for Software &amp; AI Projects</h1>
-              <p className="page-hero__description">
-                We guide projects from business discovery to launch and continuous improvement
-                with clear ownership, practical architecture, and steady collaboration.
-              </p>
+          <div className="inner-hero-layout page-hero__content">
+            <Stack gap="xl">
+              <Stack gap="lg">
+                <p className="page-hero__eyebrow">Process</p>
+                <h1 className="page-hero__title">A Clear Delivery Model for Software &amp; AI Projects</h1>
+                <p className="page-hero__description">
+                  We guide projects from business discovery to launch and continuous improvement
+                  with clear ownership, practical architecture, and steady collaboration.
+                </p>
+              </Stack>
+              <div className="home-actions">
+                <Button href="/contact?type=consultation" size="lg">
+                  Start Discovery
+                </Button>
+                <Button href="/services" size="lg" variant="secondary">
+                  View Services
+                </Button>
+              </div>
             </Stack>
-            <div className="home-actions">
-              <Button href="/contact?type=consultation" size="lg">
-                Start Discovery
-              </Button>
-              <Button href="/services" size="lg" variant="secondary">
-                View Services
-              </Button>
-            </div>
-          </Stack>
+            <ProcessHeroVisual />
+          </div>
         </Container>
       </Section>
 

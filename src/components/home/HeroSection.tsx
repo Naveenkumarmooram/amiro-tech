@@ -18,10 +18,16 @@ const trustTags = [
 export function HeroSection({ className }: HeroSectionProps) {
   return (
     <Section className={['home-hero', className].filter(Boolean).join(' ')} spacing="spacious">
+      <div aria-hidden="true" className="home-hero__blueprint">
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
       <Container>
         <div className="home-hero__layout">
-          <Stack className="home-hero__content" gap="xl">
-            <Stack gap="lg">
+          <Stack className="home-hero__content" gap="lg">
+            <Stack gap="md">
               <p className="home-hero__eyebrow">Amiro Tech Solutions</p>
               <h1 className="home-hero__title">
                 <span>Software &amp; AI Solutions</span>

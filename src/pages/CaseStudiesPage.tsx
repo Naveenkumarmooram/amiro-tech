@@ -1,4 +1,5 @@
 import { Button, Card, Container, Grid, Section, SectionHeader, Stack } from '../components/common'
+import { CaseStudyHeroVisual } from '../components/visuals'
 
 const outcomes = [
   'Inventory visibility',
@@ -27,16 +28,19 @@ export function CaseStudiesPage() {
     <>
       <Section className="page-hero" spacing="spacious">
         <Container>
-          <Stack className="page-hero__content" gap="xl">
-            <Stack gap="lg">
-              <p className="page-hero__eyebrow">Case Studies</p>
-              <h1 className="page-hero__title">Project Showcases Built Around Business Outcomes</h1>
-              <p className="page-hero__description">
-                Explore how Amiro Tech turns operational problems into focused digital systems
-                with clear workflows, measurable outcomes, and scalable architecture.
-              </p>
+          <div className="inner-hero-layout page-hero__content">
+            <Stack gap="xl">
+              <Stack gap="lg">
+                <p className="page-hero__eyebrow">Case Studies</p>
+                <h1 className="page-hero__title">Project Showcases Built Around Business Outcomes</h1>
+                <p className="page-hero__description">
+                  Explore how Amiro Tech turns operational problems into focused digital systems
+                  with clear workflows, measurable outcomes, and scalable architecture.
+                </p>
+              </Stack>
             </Stack>
-          </Stack>
+            <CaseStudyHeroVisual />
+          </div>
         </Container>
       </Section>
 
