@@ -1,72 +1,70 @@
-import { Card, Container, Grid, Section, SectionHeader, Stack } from '../common'
+import type { CSSProperties } from 'react'
+import { Container, Section, SectionHeader, Stack } from '../common'
 
 type TechnologySectionProps = {
   className?: string
 }
 
-const technologies = [
+const technologyGroups = [
   {
-    accent: 'gold',
-    items: ['React', 'TypeScript'],
+    items: ['React', 'Next.js', 'TypeScript'],
     title: 'Frontend',
   },
   {
-    accent: 'gold',
-    items: ['Python', 'FastAPI'],
+    items: ['Python', 'FastAPI', 'Node.js'],
     title: 'Backend',
   },
   {
-    accent: 'gold',
-    items: ['PostgreSQL'],
-    title: 'Database',
-  },
-  {
-    accent: 'cyan',
-    items: ['LLMs', 'Generative AI', 'AI Agents', 'Voice AI'],
+    items: ['OpenAI', 'LangChain', 'Vector Database', 'RAG'],
     title: 'AI',
   },
   {
-    accent: 'gold',
-    items: ['AWS', 'Vercel', 'Supabase'],
+    items: ['AWS', 'Docker', 'Kubernetes'],
     title: 'Cloud',
   },
   {
-    accent: 'gold',
-    items: ['APIs', 'Webhooks', 'Automation'],
+    items: ['PostgreSQL', 'Redis'],
+    title: 'Database',
+  },
+  {
+    items: ['REST APIs', 'GraphQL', 'Webhooks'],
     title: 'Integration',
   },
 ]
 
 export function TechnologySection({ className }: TechnologySectionProps) {
   return (
-    <Section className={['technology-section', className].filter(Boolean).join(' ')}>
+    <Section className={['technology-section', className].filter(Boolean).join(' ')} spacing="compact">
+      <div className="technology-section__ambient" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
       <Container>
-        <Stack gap="xl">
+        <Stack gap="lg">
           <SectionHeader
-            description="We use practical, modern technologies to build reliable software, AI systems, automation workflows, and cloud-ready platforms."
+            description="We use proven technologies to build scalable AI products, enterprise software, automation platforms, and cloud-native applications."
             eyebrow="Technology"
-            title="Modern Technology for Scalable Solutions"
+            title="Modern Technologies"
           />
-          <Grid columns={3}>
-            {technologies.map((technology) => (
-              <Card
-                className={`technology-section__card technology-section__card--${technology.accent}`}
-                key={technology.title}
-              >
-                <Stack gap="lg">
-                  <span className="technology-section__marker" />
-                  <h3 className="technology-section__title">{technology.title}</h3>
-                  <ul className="technology-section__tags" aria-label={`${technology.title} tools`}>
-                    {technology.items.map((item) => (
-                      <li className="technology-section__tag" key={item}>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </Stack>
-              </Card>
+          <div className="technology-section__groups" aria-label="Modern technology stack">
+            {technologyGroups.map((group, groupIndex) => (
+              <article className="technology-section__group" key={group.title}>
+                <h3 className="technology-section__title">{group.title}</h3>
+                <ul className="technology-section__tags" aria-label={`${group.title} technologies`}>
+                  {group.items.map((item, itemIndex) => (
+                    <li
+                      className="technology-section__tag"
+                      key={item}
+                      style={{ '--tech-delay': `${(groupIndex * 80) + (itemIndex * 45)}ms` } as CSSProperties}
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
             ))}
-          </Grid>
+          </div>
         </Stack>
       </Container>
     </Section>

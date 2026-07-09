@@ -1,24 +1,36 @@
+import type { CSSProperties } from 'react'
+
 import { Button, Container, Section, SectionHeader } from '../common'
 
 type ValueStripSectionProps = {
   className?: string
 }
 
-const outcomes = [
-  'Digitize Operations',
-  'Reduce Manual Work',
-  'Connected Systems',
-  'Improve Visibility',
-  'Faster Delivery',
-  'AI Assisted Decisions',
+const challenges = [
+  'Manual Work',
+  'Disconnected Systems',
+  'Repetitive Tasks',
+  'Slow Operations',
+  'Scattered Data',
+  'Legacy Software',
 ]
 
-const transformationStages = [
-  'Manual',
-  'Automate',
-  'AI',
-  'Connect',
-  'Insights',
+const engineStages = [
+  'Business Challenges',
+  'Software Platform',
+  'AI Intelligence',
+  'Automation',
+  'Business Outcomes',
+]
+
+const outcomes = [
+  'Faster Delivery',
+  'AI Assisted Decisions',
+  'Connected Systems',
+  'Voice Automation',
+  'Live Insights',
+  'Automated Workflows',
+  'Increased Productivity',
 ]
 
 export function ValueStripSection({ className }: ValueStripSectionProps) {
@@ -33,42 +45,77 @@ export function ValueStripSection({ className }: ValueStripSectionProps) {
               title="What We Help Businesses Achieve"
             />
             <Button className="value-strip__cta" href="/services" variant="ghost">
-              See Our Services →
+              See Our Services <span aria-hidden="true">-&gt;</span>
             </Button>
           </div>
-          <div aria-label="Business transformation flow" className="value-strip__visual">
+
+          <div aria-label="Business transformation engine" className="value-strip__visual">
             <div aria-hidden="true" className="value-strip__mesh" />
-            <div className="value-strip__platform">
-              <span aria-hidden="true" className="value-strip__platform-edge" />
-              <span aria-hidden="true" className="value-strip__platform-glow" />
-              <div className="value-strip__flow">
-                {transformationStages.map((stage, index) => (
-                  <div
-                    className={[
-                      'value-strip__node',
-                      index === 2 ? 'value-strip__node--ai' : '',
-                    ]
-                      .filter(Boolean)
-                      .join(' ')}
-                    key={stage}
-                  >
-                    <span>{String(index + 1).padStart(2, '0')}</span>
-                    <strong>{stage}</strong>
-                  </div>
-                ))}
-                <span aria-hidden="true" className="value-strip__pulse" />
+            <div aria-hidden="true" className="value-strip__particles">
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+
+            <div className="value-strip__engine">
+              <div className="value-strip__input" aria-label="Business challenges entering the AI engine">
+                <p>Business Challenges</p>
+                <ul>
+                  {challenges.map((challenge, index) => (
+                    <li key={challenge} style={{ '--item-index': index } as CSSProperties}>
+                      {challenge}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="value-strip__pipeline value-strip__pipeline--in" aria-hidden="true">
+                <span className="value-strip__pipeline-line" />
+                <span className="value-strip__pipeline-pulse" />
+                <span className="value-strip__pipeline-particle value-strip__pipeline-particle--one" />
+                <span className="value-strip__pipeline-particle value-strip__pipeline-particle--two" />
+              </div>
+
+              <div className="value-strip__core" aria-label="AI core processing business operations" tabIndex={0}>
+                <span aria-hidden="true" className="value-strip__core-glow" />
+                <span aria-hidden="true" className="value-strip__core-ring value-strip__core-ring--outer" />
+                <span aria-hidden="true" className="value-strip__core-ring value-strip__core-ring--middle" />
+                <span aria-hidden="true" className="value-strip__core-ring value-strip__core-ring--inner" />
+                <span aria-hidden="true" className="value-strip__core-grid" />
+                <div className="value-strip__core-label">
+                  <span>AI Engine</span>
+                  <strong>Processing</strong>
+                </div>
+                <ul className="value-strip__core-stages" aria-label="Transformation stages">
+                  {engineStages.map((stage, index) => (
+                    <li key={stage} style={{ '--stage-index': index } as CSSProperties}>
+                      {stage}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="value-strip__pipeline value-strip__pipeline--out" aria-hidden="true">
+                <span className="value-strip__pipeline-line" />
+                <span className="value-strip__pipeline-pulse" />
+                <span className="value-strip__pipeline-particle value-strip__pipeline-particle--one" />
+                <span className="value-strip__pipeline-particle value-strip__pipeline-particle--two" />
+              </div>
+
+              <div className="value-strip__output" aria-label="Business outcomes generated by the AI engine">
+                <p>Business Outcomes</p>
+                <ul>
+                  {outcomes.map((outcome, index) => (
+                    <li key={outcome} style={{ '--item-index': index } as CSSProperties}>
+                      <span aria-hidden="true">✓</span>
+                      {outcome}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-            <ul className="value-strip__badges" aria-label="Business outcomes">
-              {outcomes.map((outcome) => (
-                <li className="value-strip__badge" key={outcome}>
-                  <span className="value-strip__badge-label">
-                    <span aria-hidden="true">✓</span>
-                    {outcome}
-                  </span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </Container>
