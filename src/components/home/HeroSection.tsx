@@ -1,60 +1,28 @@
-import { Button, Container, Section, Stack } from '../common'
+import { Button, Container, Section } from '../common'
 import { HeroVisual } from '../visuals'
 
-type HeroSectionProps = {
-  className?: string
-}
+type HeroSectionProps = { className?: string }
 
-const trustTags = [
-  'Custom Software',
-  'AI Solutions',
-  'Voice AI',
-  'AI Agents',
-  'Automation',
-  'System Integration',
-  'Cloud Ready',
-]
+const trustItems = ['AI Solutions', 'Cloud Native', 'Enterprise Ready']
 
 export function HeroSection({ className }: HeroSectionProps) {
   return (
-    <Section className={['home-hero', className].filter(Boolean).join(' ')} spacing="spacious">
-      <div aria-hidden="true" className="home-hero__blueprint">
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
+    <Section className={['home-hero', 'premium-hero', className].filter(Boolean).join(' ')} spacing="spacious">
+      <div aria-hidden="true" className="home-hero__blueprint"><span /><span /><span /><span /></div>
       <Container>
-        <div className="home-hero__layout">
-          <Stack className="home-hero__content" gap="lg">
-            <Stack gap="md">
-              <p className="home-hero__eyebrow">Amiro Tech Solutions</p>
-              <h1 className="home-hero__title">
-                <span>Software &amp; AI Solutions</span>
-                <span>Built Around Your Business</span>
-              </h1>
-              <p className="home-hero__description">
-                We design and build custom software, AI solutions, Voice AI agents,
-                automation systems, and scalable digital platforms that help businesses
-                digitize operations, reduce manual work, and grow faster.
-              </p>
-            </Stack>
-            <div className="home-actions">
-              <Button href="/contact?type=consultation" size="lg">
-                Book a Strategy Call
-              </Button>
-              <Button href="/services" size="lg" variant="secondary">
-                Explore Services
-              </Button>
+        <div className="premium-hero__layout">
+          <div className="premium-hero__content">
+            <p className="premium-hero__eyebrow"><span /> Enterprise technology partner</p>
+            <h1><strong>Software &amp; AI Services</strong><span>for Business Growth</span></h1>
+            <p className="premium-hero__description">We design and build enterprise software, AI systems, voice agents, and automation platforms that turn complex operations into scalable business advantage.</p>
+            <div className="premium-hero__actions">
+              <Button href="/contact?type=consultation" size="lg">Book a Strategy Call <span aria-hidden="true">→</span></Button>
+              <Button href="/services" size="lg" variant="secondary">Explore Services</Button>
             </div>
-            <ul aria-label="Amiro Tech capabilities" className="home-hero__tags">
-              {trustTags.map((tag) => (
-                <li className="home-hero__tag" key={tag}>
-                  {tag}
-                </li>
-              ))}
+            <ul className="premium-hero__trust" aria-label="Platform qualities">
+              {trustItems.map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}
             </ul>
-          </Stack>
+          </div>
           <HeroVisual />
         </div>
       </Container>
