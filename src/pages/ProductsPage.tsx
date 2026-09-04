@@ -4,6 +4,7 @@ import { ProductMiniVisual, ProductsHeroVisual } from '../components/visuals'
 const products = [
   {
     accent: 'gold',
+    category: 'Inventory & Compliance',
     cta: 'Request Demo',
     description:
       'A custom inventory, compliance, calibration, and audit management system designed for NDT laboratories to improve tracking, audit readiness, and operational visibility.',
@@ -22,6 +23,7 @@ const products = [
   },
   {
     accent: 'gold',
+    category: 'People Operations',
     cta: 'Join Waitlist',
     description:
       'A modern HR platform for small and medium businesses to manage employee records, attendance, leave, onboarding, documents, and workforce operations.',
@@ -40,6 +42,7 @@ const products = [
   },
   {
     accent: 'cyan',
+    category: 'Conversational AI',
     cta: 'Request Early Access',
     description:
       'AI-powered voice agents that help businesses answer customer calls, qualify leads, schedule appointments, provide support, and automate routine conversations.',
@@ -58,6 +61,7 @@ const products = [
   },
   {
     accent: 'gold',
+    category: 'Business Operations',
     cta: 'Discuss Requirement',
     description:
       'An integrated operations platform for growing companies to manage CRM, tasks, approvals, dashboards, documents, and workflow automation in one place.',
@@ -72,31 +76,29 @@ const products = [
 export function ProductsPage() {
   return (
     <>
-      <Section className="products-page-hero" spacing="spacious">
+      <Section className="products-page-hero products-premium-hero" spacing="spacious">
         <Container>
-          <div className="inner-hero-layout products-page-hero__content">
-            <Stack gap="xl">
-              <Stack gap="lg">
-                <p className="page-hero__eyebrow">Products</p>
-                <h1 className="page-hero__title">Business Solutions Built for Growing Companies</h1>
-                <p className="page-hero__description">
+          <div className="products-premium-hero__layout">
+            <div className="products-premium-hero__content">
+                <p className="products-premium-hero__eyebrow"><span /> Products</p>
+                <h1><span>Business Solutions Built</span><span>for Growing Companies</span></h1>
+                <p className="products-premium-hero__description">
                   Alongside custom software development, Amiro Tech is building practical
                   software products that help growing businesses digitize operations, automate
                   workflows, and improve visibility.
                 </p>
-                <p className="products-page-hero__badge">
+                <p className="products-premium-hero__badge">
                   Based in Bangalore <span aria-hidden="true">•</span> Serving Clients Globally
                 </p>
-              </Stack>
-              <div className="home-actions">
+              <div className="products-premium-hero__actions">
                 <Button href="/contact?type=product-demo" size="lg">
-                  Request Product Demo
+                  Request Product Demo <span aria-hidden="true">→</span>
                 </Button>
                 <Button href="/contact?type=custom-software" size="lg" variant="secondary">
-                  Discuss Custom Software
+                  Discuss Custom Software <span aria-hidden="true">→</span>
                 </Button>
               </div>
-            </Stack>
+            </div>
             <ProductsHeroVisual />
           </div>
         </Container>
@@ -111,7 +113,7 @@ export function ProductsPage() {
               title="Software products shaped around real business workflows."
             />
             <Grid columns={2}>
-              {products.map((product) => (
+              {products.map((product, index) => (
                 <Card
                   className={`product-card product-card--${product.accent}`}
                   interactive
@@ -130,6 +132,8 @@ export function ProductsPage() {
                         >
                           {product.status}
                         </span>
+                        <span className="product-card__category">{product.category}</span>
+                        <span className="product-card__number">{String(index + 1).padStart(2, '0')}</span>
                       </div>
                       <h2 className="product-card__title">{product.title}</h2>
                       <p className="product-card__description">{product.description}</p>

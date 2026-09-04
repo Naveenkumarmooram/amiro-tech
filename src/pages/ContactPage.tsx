@@ -114,7 +114,10 @@ export function ContactPage() {
           <div className="inner-hero-layout contact-hero__layout">
             <Stack className="page-hero__content contact-hero__content" gap="xl">
               <p className="page-hero__eyebrow">Contact</p>
-              <h1 className="page-hero__title">Start a Conversation About Your Next System</h1>
+              <h1 className="page-hero__title">
+                <span>Start a Conversation</span>
+                <span>About Your Next System</span>
+              </h1>
               <p className="page-hero__description">
                 Tell us about your business challenge, software requirement, AI initiative, or the
                 product you would like to explore.
@@ -125,7 +128,7 @@ export function ContactPage() {
         </Container>
       </Section>
 
-      <Section className="contact-section">
+      <Section className="contact-section" id="contact-form">
         <Container>
           <div className="contact-layout contact-layout--premium">
             <Stack className="contact-sidebar" gap="xl">
