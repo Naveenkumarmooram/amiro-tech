@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Container } from '../common'
 
 type NavItem = {
@@ -28,10 +28,31 @@ export function Navbar({
   items = defaultItems,
 }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    if (!isMenuOpen) return
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { setIsMenuOpen(false); toggleRef.current?.focus() }
+    }
+    const closeOutside = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setIsMenuOpen(false)
+    }
+    const desktop = window.matchMedia('(min-width: 64rem)')
+    const closeOnDesktop = () => { if (desktop.matches) setIsMenuOpen(false) }
+    document.addEventListener('keydown', closeOnEscape)
+    document.addEventListener('pointerdown', closeOutside)
+    desktop.addEventListener('change', closeOnDesktop)
+    return () => {
+      document.removeEventListener('keydown', closeOnEscape)
+      document.removeEventListener('pointerdown', closeOutside)
+      desktop.removeEventListener('change', closeOnDesktop)
+    }
+  }, [isMenuOpen])
   const classes = ['navbar', className].filter(Boolean).join(' ')
 
   return (
-    <header className={classes}>
+    <header className={classes} ref={headerRef}>
       <Container>
         <nav aria-label="Primary" className="navbar__inner">
           <a className="navbar__brand" href="/">
@@ -40,11 +61,13 @@ export function Navbar({
           <button
             aria-controls="mobile-navigation"
             aria-expanded={isMenuOpen}
+            ref={toggleRef}
             className="navbar__menu-button"
             onClick={() => setIsMenuOpen((current) => !current)}
             type="button"
           >
-            Menu
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d={isMenuOpen ? 'm6 6 12 12M18 6 6 18' : 'M4 6h16M4 12h16M4 18h16'} /></svg>
+            {isMenuOpen ? 'Close' : 'Menu'}
           </button>
           <div className="navbar__links">
             {items.map((item) => (
@@ -69,6 +92,7 @@ export function Navbar({
             <a
               aria-current={activePath === item.href ? 'page' : undefined}
               className="navbar__mobile-link"
+              onClick={() => setIsMenuOpen(false)}
               href={item.href}
               key={item.href}
             >

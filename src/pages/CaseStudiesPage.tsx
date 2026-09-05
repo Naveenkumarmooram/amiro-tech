@@ -66,8 +66,8 @@ export function CaseStudiesPage() {
             <Card className="case-showcase__visual" padding="compact">
               <div className="case-dashboard">
                 <div className="case-dashboard__header">
-                  <span />
-                  <span />
+                  <strong>Inventory &amp; compliance</strong>
+                  <small>Platform overview</small>
                 </div>
                 <Grid columns={2} gap="sm">
                   <div className="case-dashboard__tile">Inventory Status</div>

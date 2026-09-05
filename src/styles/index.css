@@ -2839,38 +2839,6 @@ p {
   z-index: 1;
 }
 
-.why-amiro__workflow-visual {
-  position: absolute;
-  inset: 12% 5% auto;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-4);
-  pointer-events: none;
-  opacity: 0.42;
-}
-
-.why-amiro__workflow-visual::before {
-  position: absolute;
-  top: 50%;
-  right: 8%;
-  left: 8%;
-  height: 1px;
-  content: "";
-  background: linear-gradient(90deg, transparent, rgb(231 163 0 / 0.48), rgb(59 201 219 / 0.22), transparent);
-}
-
-.why-amiro__workflow-visual span {
-  position: relative;
-  border: 1px solid rgb(231 163 0 / 0.18);
-  border-radius: var(--radius-full);
-  padding: 0.4rem 0.6rem;
-  color: var(--color-muted);
-  background: rgb(31 33 39 / 0.64);
-  font-size: var(--font-size-xs);
-  font-weight: 900;
-  text-align: center;
-}
-
 .why-amiro__card {
   position: relative;
   min-height: 100%;

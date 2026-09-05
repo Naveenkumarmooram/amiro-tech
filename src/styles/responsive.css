@@ -1,0 +1,162 @@
+/* Confirmed intrinsic sizing bugs: keep approved type sizes and allow wrapping. */
+.inner-hero-layout > * { min-width: 0; }
+.page-hero:not(.contact-hero) .page-hero__title { white-space: normal; }
+.process-timeline__item { min-width: 0; }
+.process-timeline__item .page-card__title { overflow-wrap: anywhere; }
+.services-final-cta__content h2 span { white-space: normal; }
+
+@media (max-width: 64rem) {
+  .workflow-section .section-header__title,
+  .services-overview .section-header__title { white-space: normal; width: auto; max-width: 100%; }
+  .inner-hero-layout:not(.contact-hero__layout) { grid-template-columns: minmax(0, 1fr); }
+  .process-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .workflow-section__flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 63.999rem) {
+  .navbar__menu-button { min-height: 44px; min-width: 44px; gap: 8px; }
+  .navbar__mobile--open { display: grid; gap: 8px; padding: 12px; margin-bottom: 12px; border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-bg-soft); max-height: calc(100dvh - 110px); overflow-y: auto; }
+  .navbar__mobile-link { min-height: 44px; display: flex; align-items: center; }
+}
+
+@media (max-width: 47.999rem) {
+  :root { --container-padding: 20px; }
+  .container > *, .grid > *, .stack > * { min-width: 0; }
+  .page-hero__content, .section-header { max-width: 100%; }
+  .page-hero__title, .contact-hero .page-hero__title,
+  .premium-hero__content h1 strong, .services-premium-hero__content h1 strong,
+  .products-premium-hero__content h1 strong, .about-premium-hero__content h1 strong {
+    font-size: clamp(34px, 9vw, 40px); line-height: 1.12; white-space: normal;
+  }
+  .section-header__title, .services-section-heading h2,
+  .enterprise-case__story h2, .contact-section .section-header__title,
+  .contact-hero ~ .page-section .section-header__title { font-size: clamp(30px, 8vw, 36px); line-height: 1.17; white-space: normal; }
+  .section-header__description, .page-hero__description, .page-card__text { font-size: 16px; line-height: 1.65; }
+  .button { min-height: 48px; max-width: 100%; min-width: 0; padding-inline: 16px; font-size: 16px; white-space: normal; text-align: center; }
+  .home-actions, .products-premium-hero__actions, .about-premium-hero__actions,
+  .premium-hero__actions, .services-premium-hero__actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; width: 100%; }
+  .home-actions .button, .products-premium-hero__actions .button,
+  .services-premium-hero__actions .button, .about-premium-hero__actions .button { width: 100%; min-width: 0; }
+  .products-premium-hero__badge { width: fit-content; max-width: 100%; flex-wrap: wrap; white-space: normal; font-size: 14px; line-height: 1.6; }
+  .premium-hero__trust, .about-premium-hero__trust { flex-wrap: wrap; font-size: 15px; gap: 12px; }
+  .services-premium-hero__note { font-size: 15px; }
+  .services-core__grid, .services-outcomes__grid, .services-capabilities__grid,
+  .process-timeline, .workflow-section__flow { grid-template-columns: minmax(0, 1fr); }
+  .services-core__card { min-height: 0; }
+  .services-core__card h3 { font-size: 21px; }
+  .services-core__card p, .services-core__card li, .services-core__card a,
+  .services-approach__closing, .services-overview__features, .services-overview__tag,
+  .workflow-section__features, .process-preview__labels, .technology-card__tag,
+  .services-overview__cta { font-size: 15px; line-height: 1.6; }
+  .services-approach__timeline { grid-template-columns: minmax(0, 1fr); }
+  .services-final-cta__panel { grid-template-columns: minmax(0, 1fr); padding: 24px; gap: 24px; }
+  .services-final-cta__content h2 { font-size: 30px; }
+  .services-final-cta__actions { width: 100%; max-width: none; }
+  .services-final-cta__actions .button { min-width: 0; width: 100%; }
+  .delivery-timeline__step { min-width: 0; }
+  .delivery-timeline__step p { font-size: 15px; line-height: 1.6; }
+
+  /* Reflow architecture modules rather than shrinking an absolute canvas. */
+  .ai-architecture { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; height: auto; min-height: 0; padding: 20px; }
+  .ai-architecture .ai-architecture__core, .ai-architecture .ai-architecture__module {
+    position: relative; inset: auto; width: 100%; height: auto; min-width: 0; max-width: none; transform: none; margin: 0; animation: none;
+  }
+  .ai-architecture .ai-architecture__core { order: -1; padding: 24px 16px; }
+  .ai-architecture .ai-architecture__core p, .ai-architecture__core-status,
+  .ai-architecture .ai-architecture__module small { font-size: 15px; line-height: 1.55; }
+  .ai-architecture .ai-architecture__module strong { font-size: 18px; }
+  .ai-architecture .ai-architecture__module { padding: 16px; }
+  .ai-architecture__connections, .ai-architecture__signal, .ai-architecture__halo, .ai-architecture__port { display: none; }
+  .solution-architecture__canvas { display: flex; flex-direction: column; gap: 12px; height: auto; min-height: 0; padding: 20px; }
+  .solution-architecture .solution-architecture__node,
+  .solution-architecture .solution-architecture__core,
+  .solution-architecture .solution-architecture__group,
+  .solution-architecture .solution-architecture__foundation { position: relative; inset: auto; width: 100%; height: auto; transform: none; min-height: 0; }
+  .solution-architecture .solution-architecture__core { order: -1; padding: 24px 16px; }
+  .solution-architecture__lines { display: none; }
+  .solution-architecture .solution-architecture__node { padding: 16px; }
+  .solution-architecture .solution-architecture__node strong { font-size: 18px; }
+  .solution-architecture .solution-architecture__node small,
+  .solution-architecture .solution-architecture__core small { font-size: 15px; }
+  .solution-architecture .solution-architecture__core strong { font-size: 22px; }
+  .solution-architecture__header { flex-wrap: wrap; gap: 12px; padding: 20px; }
+  .solution-architecture__header strong, .solution-architecture__header p { font-size: 15px; }
+  .solution-architecture__foundation > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .solution-architecture__foundation span { font-size: 14px; }
+  .product-ecosystem__canvas { height: auto; min-height: 0; display: flex; flex-direction: column; gap: 16px; padding: 20px; }
+  .product-ecosystem .product-ecosystem__hub { position: relative; inset: auto; transform: none; width: 100%; height: auto; padding: 20px; }
+  .product-ecosystem .product-ecosystem__modules { position: relative; inset: auto; display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .product-ecosystem .product-ecosystem__module { position: relative; inset: auto; width: 100%; min-height: 0; transform: none; padding: 16px; }
+  .product-ecosystem__connections { display: none; }
+  .product-ecosystem__header { padding: 20px; }
+  .product-ecosystem__header strong, .product-ecosystem__module p, .product-ecosystem .product-ecosystem__hub small { font-size: 15px; }
+  .product-ecosystem__module strong { font-size: 18px; }
+
+  /* Keep inquiry and response blocks separated at the narrowest widths. */
+  .contact-hero .inner-hero-visual--contact { min-height: 0; }
+  .contact-hero .hero-scene--contact { position: relative; inset: auto; display: grid; gap: 20px; padding: 24px; }
+  .contact-hero .hero-scene__inbox, .contact-hero .hero-scene__response-flow,
+  .contact-hero .hero-scene__sla { position: relative; inset: auto; width: 100%; min-width: 0; margin: 0; }
+  .contact-hero .hero-scene__sla { justify-content: center; }
+  .contact-hero .hero-scene__response-flow span { font-size: 15px; }
+  .contact-hero .hero-scene__contact-network span { animation: none; }
+  .contact-form input, .contact-form select, .contact-form textarea { width: 100%; min-width: 0; font-size: 16px; }
+  .contact-form label, .form-grid { min-width: 0; }
+  .contact-form textarea { resize: vertical; }
+  .contact-form__email-link, .contact-quick__button, .contact-product-picks__button { min-height: 44px; font-size: 15px; }
+  .contact-detail a { overflow-wrap: anywhere; }
+  .footer-premium .footer-premium__top { grid-template-columns: minmax(0, 1fr); }
+  .footer-premium .footer__link { font-size: 16px; min-height: 44px; display: inline-flex; align-items: center; overflow-wrap: anywhere; }
+  .footer-premium .footer__identity p, .footer-premium .footer__bottom p { font-size: 15px; }
+  .footer-premium__email { word-break: break-word; }
+
+  /* Readable dashboard previews: stack widgets with their original content. */
+  .ims-shell .ims-app { grid-template-columns: minmax(0, 1fr); }
+  .ims-shell .ims-sidebar { display: none; }
+  .ims-shell .ims-dashboard { padding: 16px; }
+  .ims-shell .ims-kpis, .ims-shell .ims-dashboard__grid { grid-template-columns: minmax(0, 1fr); }
+  .ims-shell .ims-topbar { flex-wrap: wrap; }
+  .ims-shell :is(p,small,span,li,a,button) { font-size: 14px; }
+  .ims-shell .ims-kpis strong { font-size: 26px; }
+  .ims-shell .ims-widget-head { flex-wrap: wrap; gap: 8px; }
+  .product-ui { height: auto; min-height: 0; }
+  .product-ui :is(p,span,small,b) { font-size: 15px; }
+  .product-ui .product-ui__bar strong { font-size: 16px; }
+  .product-ui .product-ui__metrics, .product-ui .product-ui__body,
+  .product-ui .product-ui__ops, .product-ui .product-ui__voice-stats { grid-template-columns: minmax(0, 1fr); }
+  .product-ui .product-ui__flow { flex-wrap: wrap; }
+  .value-strip__core-stages { flex-wrap: wrap; }
+  .value-strip__core-stages p, .value-strip__input p, .value-strip__output p { font-size: 15px; }
+  .premium-hero__trust li, .about-premium-hero__trust li,
+  .services-overview__features li, .workflow-section__features li,
+  .process-preview__labels span, .process-preview__labels li { font-size: 15px; }
+  .solution-architecture .solution-architecture__header strong,
+  .product-ecosystem .product-ecosystem__header strong { font-size: 16px; }
+  .value-strip__core { display: flex; flex-direction: column; gap: 24px; height: auto; padding: 24px 16px; }
+  .value-strip__core-label, .value-strip__core-stages { position: relative; inset: auto; transform: none; }
+  .value-strip__core-stages { grid-template-columns: 1fr; width: 100%; }
+  .value-strip__core-stages li, .value-strip__input li, .value-strip__output li { font-size: 15px; line-height: 1.6; }
+  .product-ui .product-ui__metrics strong { font-size: 22px; }
+  .product-ui .product-ui__chart, .product-ui .product-ui__people { height: auto; }
+  .product-ui :is(span,p,small) { color: var(--color-muted); }
+  .ims-shell .ims-widget-head strong { font-size: 16px; }
+  .ims-shell :is(span,p,small,li) { color: var(--color-muted); }
+  .ims-shell .ims-status__ring span { font-size: 14px; }
+  .contact-journey__step strong, .contact-journey__step small { font-size: 15px; }
+  .hero-scene__case-topbar strong { font-size: 15px; }
+  .enterprise-case__insights li, .contact-journey__step p { font-size: 15px; line-height: 1.6; }
+  .enterprise-case__insights h3 { font-size: 20px; }
+  .solution-architecture__foundation p strong { font-size: 15px; }
+  .solution-architecture__foundation > div { grid-template-columns: minmax(0, 1fr); }
+  .products-section .product-ui :is(span, p, small) { font-size: 15px; color: var(--color-muted); }
+  .products-section .product-ui__voice-main { grid-template-columns: minmax(0, 1fr); height: auto; }
+  .products-section .product-card__cta { min-height: 48px; font-size: 16px; }
+  .ims-shell .ims-shell__browser { height: auto; min-height: 44px; flex-wrap: wrap; padding-block: 8px; }
+  .ims-shell .ims-shell__browser span { width: auto; max-width: 100%; overflow-wrap: anywhere; }
+  .workflow-section__particle, .services-overview__particle,
+  .value-strip__particles, .technology-section__ambient { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell *, .app-shell *::before, .app-shell *::after { animation: none; transition: none; }
+}

@@ -52,12 +52,6 @@ export function WhyAmiroSection({ className }: WhyAmiroSectionProps) {
             title="Why Businesses Choose Amiro Tech"
           />
           <div className="why-amiro__connected-grid">
-            <div aria-hidden="true" className="why-amiro__workflow-visual">
-              <span>Process</span>
-              <span>Design</span>
-              <span>Build</span>
-              <span>Support</span>
-            </div>
             <Grid columns={3}>
               {reasons.map((reason) => (
                 <Card className="why-amiro__card" interactive key={reason.title}>
