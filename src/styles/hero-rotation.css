@@ -1,0 +1,41 @@
+.ai-architecture__carousel { display: contents; }
+.ai-architecture--rotating .ai-architecture__module {
+  cursor: pointer; font-family: inherit; text-align: left; color: inherit;
+  opacity: .78; animation: none;
+  transition: transform 450ms ease, border-color 450ms ease, box-shadow 450ms ease, opacity 450ms ease;
+}
+.ai-architecture__module-copy { display: grid; gap: 4px; }
+.ai-architecture--rotating .ai-architecture__port { display: none; }
+.ai-architecture--rotating .ai-architecture__module.is-active {
+  opacity: 1; transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--service-accent) 45%, transparent);
+  box-shadow: 0 12px 28px rgb(0 0 0 / .2), 0 0 24px color-mix(in srgb, var(--service-accent) 8%, transparent);
+}
+.ai-architecture--rotating .ai-architecture__connections path { stroke: rgb(255 255 255 / .12); animation: none; transition: stroke 500ms ease; }
+.ai-architecture--rotating .ai-architecture__connections path.is-active { stroke: var(--connection-color); stroke-opacity: .6; stroke-dasharray: 6 12; animation: ecosystem-flow 3.5s linear infinite; }
+.ai-architecture--rotating .ai-architecture__core { animation: none; }
+.ai-architecture--rotating .ai-architecture__description { min-height: 7.5em; margin-block: 12px; animation: ecosystem-copy 450ms ease both; }
+.ai-architecture__controls { position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 12px; z-index: 5; }
+.ai-architecture__pagination { display: flex; }
+.ai-architecture__pagination button, .ai-architecture__pause { display: grid; place-items: center; min-height: 44px; min-width: 32px; border: 0; background: transparent; color: #b1b3b8; cursor: pointer; font: inherit; font-size: 13px; }
+.ai-architecture__pagination span { width: 6px; height: 6px; border-radius: 50%; background: #62656c; transition: background 300ms ease; }
+.ai-architecture__pagination [aria-pressed="true"] span { background: var(--color-gold); }
+.ai-architecture__pause { min-width: 60px; }
+.ai-architecture--rotating button:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
+@keyframes ecosystem-flow { to { stroke-dashoffset: 72; } }
+@keyframes ecosystem-copy { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (max-width: 47.999rem) {
+  .ai-architecture--rotating { padding: 20px; gap: 16px; scale: 1; }
+  .ai-architecture--rotating .ai-architecture__core { min-height: 0; }
+  .ai-architecture--rotating .ai-architecture__description { min-height: 6.2em; }
+  .ai-architecture__carousel { display: flex; position: relative; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 16px; padding: 8px 0; overscroll-behavior-x: contain; }
+  .ai-architecture__carousel::-webkit-scrollbar { display: none; }
+  .ai-architecture--rotating .ai-architecture__module { flex: 0 0 100%; scroll-snap-align: start; min-height: 112px; width: 100%; transform: none; }
+  .ai-architecture__controls { position: relative; inset: auto; gap: 4px; flex-wrap: wrap; }
+  .ai-architecture__pagination button { min-width: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-architecture--rotating .ai-architecture__connections path.is-active,
+  .ai-architecture--rotating .ai-architecture__description { animation: none; }
+  .ai-architecture--rotating .ai-architecture__module { transition: none; }
+}
