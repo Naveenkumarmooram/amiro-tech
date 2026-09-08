@@ -9,7 +9,7 @@ const services = [
   { position: 'software', icon: '⌘', label: 'Custom Software', meta: 'Applications', description: 'Purpose-built applications shaped around how your teams work.', path: 'M425 248 C480 220 505 170 550 140', accent: 'cyan' },
 ]
 
-export function HeroVisual() {
+export function HeroVisual({ autoRotate = true }: { autoRotate?: boolean }) {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
   const [hovered, setHovered] = useState(false)
@@ -34,13 +34,13 @@ export function HeroVisual() {
   }, [])
 
   useEffect(() => {
-    if (paused || hovered || keyboardFocus || reduced || !visible) return
+    if (!autoRotate || paused || hovered || keyboardFocus || reduced || !visible) return
     const timer = setTimeout(() => {
       if (!document.hidden) { setActive(current => (current + 1) % services.length); setDelay(3500) }
       else setInteraction(current => current + 1)
     }, delay)
     return () => clearTimeout(timer)
-  }, [active, paused, hovered, keyboardFocus, reduced, visible, delay, interaction])
+  }, [active, paused, hovered, keyboardFocus, reduced, visible, delay, interaction, autoRotate])
 
   useEffect(() => {
     const scroller = track.current
