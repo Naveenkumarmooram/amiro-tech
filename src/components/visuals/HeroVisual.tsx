@@ -14,7 +14,7 @@ export function HeroVisual({ autoRotate = true }: { autoRotate?: boolean }) {
   const [paused, setPaused] = useState(false)
   const [hovered, setHovered] = useState(false)
   const [keyboardFocus, setKeyboardFocus] = useState(false)
-  const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const [reduced, setReduced] = useState(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const [visible, setVisible] = useState(false)
   const [delay, setDelay] = useState(3500)
   const [interaction, setInteraction] = useState(0)

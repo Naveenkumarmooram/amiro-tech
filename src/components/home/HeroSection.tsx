@@ -33,7 +33,7 @@ export function HeroSection({ className }: { className?: string }) {
   const [hovered, setHovered] = useState(false)
   const [focused, setFocused] = useState(false)
   const [visible, setVisible] = useState(false)
-  const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const [reduced, setReduced] = useState(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const [delay, setDelay] = useState(5500)
   const [interaction, setInteraction] = useState(0)
   const root = useRef<HTMLDivElement>(null)
