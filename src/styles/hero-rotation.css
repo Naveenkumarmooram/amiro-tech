@@ -27,18 +27,29 @@
 @keyframes banner-enter { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: none; } }
 @keyframes voice-level { to { transform: scaleY(.55); opacity: .6; } }
 @media (max-width: 63.999rem) {
+  .home-hero.hero-banners { min-height: 0; padding-block: 40px 48px; }
+  .hero-banners__frame { min-height: 0; }
   .hero-banners .premium-hero__content h1 { min-height: 0; }
   .hero-banners .premium-hero__description { min-height: 0; }
 }
 @media (max-width: 47.999rem) {
   .hero-banners__frame { min-height: 0; }
-  .hero-banners .premium-hero__content { min-height: 500px; }
-  .hero-banners .ai-architecture, .hero-solution { min-height: 600px; }
+  .hero-banners .premium-hero__content { min-height: 0; }
+  .hero-banners .ai-architecture, .hero-solution { min-height: 0; }
+  .hero-banners .premium-hero__content h1 strong { font-size: clamp(34px, 9.5vw, 44px); line-height: 1.12; }
+  .hero-banners .premium-hero__content h1 > span { font-size: clamp(23px, 6vw, 28px); line-height: 1.25; color: #b4b6bd; }
+  .hero-banners .premium-hero__eyebrow { font-size: 11px; line-height: 1.6; margin-bottom: 20px; }
+  .hero-banners .premium-hero__description { margin-top: 24px; font-size: 16px; line-height: 1.65; color: #bfc1c7; }
+  .hero-banners .premium-hero__actions { margin-top: 24px; }
+  .hero-banners .premium-hero__actions .button { width: 100%; min-height: 52px; }
+  .hero-banners .premium-hero__trust { margin-top: 20px; gap: 10px 16px; }
+  .hero-banners .premium-hero__trust li { font-size: 13px; color: #b3b6be; }
+  .hero-banners .home-hero__blueprint { opacity: .15; }
   .hero-solution { padding: 20px; }
   .hero-solution__flow li { padding: 16px 12px; gap: 12px; }
   .hero-solution__flow h2 { font-size: 18px; }
-  .hero-banners__controls { gap: 12px; }
-  .hero-banners__controls button { min-width: 24px; justify-content: center; }
+  .hero-banners__controls { gap: 0; margin-top: 16px; }
+  .hero-banners__controls button { min-width: 44px; justify-content: center; }
   .hero-banners__controls small { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -70,14 +81,17 @@
 @keyframes ecosystem-flow { to { stroke-dashoffset: 72; } }
 @keyframes ecosystem-copy { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 @media (max-width: 47.999rem) {
-  .ai-architecture--rotating { padding: 20px; gap: 16px; scale: 1; }
+  .ai-architecture--rotating { padding: 8px 0 0; gap: 16px; scale: 1; }
   .ai-architecture--rotating .ai-architecture__core { min-height: 0; }
-  .ai-architecture--rotating .ai-architecture__description { min-height: 6.2em; }
+  .ai-architecture--rotating .ai-architecture__description { min-height: 0; color: #bfc1c7; }
+  .ai-architecture--rotating .ai-architecture__core-label { font-size: 11px; }
+  .hero-banners .ai-architecture__controls { display: flex; }
+  .hero-banners .ai-architecture__pause { display: none; }
   .ai-architecture__carousel { display: flex; position: relative; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 16px; padding: 8px 0; overscroll-behavior-x: contain; }
   .ai-architecture__carousel::-webkit-scrollbar { display: none; }
-  .ai-architecture--rotating .ai-architecture__module { flex: 0 0 100%; scroll-snap-align: start; min-height: 112px; width: 100%; transform: none; }
+  .ai-architecture--rotating .ai-architecture__module { flex: 0 0 100%; scroll-snap-align: start; min-height: 88px; width: 100%; transform: none; }
   .ai-architecture__controls { position: relative; inset: auto; gap: 4px; flex-wrap: wrap; }
-  .ai-architecture__pagination button { min-width: 30px; }
+  .ai-architecture__pagination button { min-width: 40px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ai-architecture--rotating .ai-architecture__connections path.is-active,
