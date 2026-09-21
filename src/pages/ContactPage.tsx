@@ -102,7 +102,7 @@ export function ContactPage() {
       inquiry.message,
     ].join('\n')
 
-    window.location.href = `mailto:amirotechsolutions@gmail.com?subject=${encodeURIComponent(
+    window.location.href = `mailto:info@amirotechsolutions.com?subject=${encodeURIComponent(
       'New Website Inquiry',
     )}&body=${encodeURIComponent(body)}`
   }
@@ -140,7 +140,7 @@ export function ContactPage() {
               <Grid columns={1} gap="sm">
                 <Card className="contact-detail" padding="compact">
                   <span>Email</span>
-                  <a href="mailto:amirotechsolutions@gmail.com">amirotechsolutions@gmail.com</a>
+                  <a href="mailto:info@amirotechsolutions.com">info@amirotechsolutions.com</a>
                 </Card>
                 <Card className="contact-detail" padding="compact">
                   <span>Phone</span>
@@ -264,7 +264,7 @@ export function ContactPage() {
                     <Button className="contact-form__submit" size="lg" type="submit">
                       Submit Inquiry
                     </Button>
-                    <a className="contact-form__email-link" href="mailto:amirotechsolutions@gmail.com">
+                    <a className="contact-form__email-link" href="mailto:info@amirotechsolutions.com">
                       Email directly
                     </a>
                   </div>
