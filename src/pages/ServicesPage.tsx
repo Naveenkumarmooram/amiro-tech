@@ -2,12 +2,12 @@ import { Button, Container, Section } from '../components/common'
 import { ServicesHeroVisual } from '../components/visuals'
 
 const coreServices = [
-  { capabilities: ['Enterprise applications', 'SaaS platforms', 'Operational systems'], description: 'Purpose-built software aligned with your workflows, users, and long-term growth.', icon: '⌘', title: 'Custom Software Development' },
-  { capabilities: ['Generative AI', 'Intelligent agents', 'Document intelligence'], description: 'Practical AI solutions that improve decisions, knowledge access, and team productivity.', icon: '✦', title: 'AI & Generative AI Solutions' },
-  { capabilities: ['Voice agents', 'Call automation', 'Conversational workflows'], description: 'Natural voice experiences for support, booking, qualification, and operations.', icon: '◉', title: 'Voice AI & Conversational Systems' },
-  { capabilities: ['Process orchestration', 'Approvals & routing', 'System triggers'], description: 'Reliable automations that reduce repetitive work, delays, and operational errors.', icon: '↯', title: 'Workflow & Business Automation' },
-  { capabilities: ['Cloud architecture', 'Platform modernization', 'Secure deployment'], description: 'Resilient cloud foundations engineered for performance, reliability, and scale.', icon: '☁', title: 'Cloud & Platform Engineering' },
-  { capabilities: ['API ecosystems', 'Data pipelines', 'System integration'], description: 'Connected data and integration layers that create one dependable operational picture.', icon: '⇄', title: 'Data & API Engineering' },
+  { capabilities: ['Enterprise applications', 'SaaS platforms', 'Operational systems'], description: 'Custom software development for enterprise applications and SaaS platforms, built around your workflows and users.', icon: '⌘', title: 'Custom Software Development' },
+  { capabilities: ['Generative AI', 'Intelligent agents', 'Document intelligence'], description: 'Generative AI development for enterprise assistants and RAG systems that help teams find answers in business documents.', icon: '✦', title: 'AI & Generative AI Solutions' },
+  { capabilities: ['Voice agents', 'Call automation', 'Conversational workflows'], description: 'Voice AI agent development for customer support, appointment booking, and lead qualification workflows.', icon: '◉', title: 'Voice AI & Conversational Systems' },
+  { capabilities: ['Process orchestration', 'Approvals & routing', 'System triggers'], description: 'Business workflow automation that connects approvals, routing, and system updates to reduce repetitive manual work.', icon: '↯', title: 'Workflow & Business Automation' },
+  { capabilities: ['Cloud architecture', 'Platform modernization', 'Secure deployment'], description: 'Cloud application development and platform modernization, with architecture built for reliable deployment and growth.', icon: '☁', title: 'Cloud & Platform Engineering' },
+  { capabilities: ['API ecosystems', 'Data pipelines', 'System integration'], description: 'Data engineering and API integration services that connect business systems, data pipelines, and reporting workflows.', icon: '⇄', title: 'Data & API Engineering' },
 ]
 
 const outcomes = [
