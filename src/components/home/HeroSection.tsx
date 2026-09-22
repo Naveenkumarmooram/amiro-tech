@@ -59,8 +59,10 @@ export function HeroSection({ className }: { className?: string }) {
   return <Section className={['home-hero', 'premium-hero', 'hero-banners', className].filter(Boolean).join(' ')} spacing="spacious">
     <div aria-hidden="true" className="home-hero__blueprint"><span /><span /><span /><span /></div>
     <Container><div ref={root} role="region" aria-roledescription="carousel" aria-label="Enterprise solutions"
-      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
-      onFocus={() => setFocused(true)} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false) }}
+      onPointerOver={event => { if (event.pointerType === 'mouse') setHovered(Boolean((event.target as HTMLElement).closest('a, button'))) }}
+      onPointerMove={event => { if (event.pointerType === 'mouse') setHovered(Boolean((event.target as HTMLElement).closest('a, button'))) }}
+      onPointerLeave={() => setHovered(false)}
+      onFocus={event => setFocused(event.target.matches(':focus-visible'))} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false) }}
       onTouchStart={event => { touch.current = { x: event.touches[0].clientX, y: event.touches[0].clientY } }}
       onTouchEnd={event => { const dx = event.changedTouches[0].clientX - touch.current.x; const dy = event.changedTouches[0].clientY - touch.current.y; if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) && !(event.target as HTMLElement).closest('.ai-architecture__carousel')) select((active + (dx < 0 ? 1 : banners.length - 1)) % banners.length) }}>
       <div className="premium-hero__layout hero-banners__frame" key={active} role="group" aria-roledescription="slide" aria-label={(active + 1) + ' of 5: ' + banner.name}>
