@@ -2,6 +2,7 @@ import { type FormEvent, useMemo, useState } from 'react'
 
 import { Button, Card, Container, Grid, Section, SectionHeader, Stack } from '../components/common'
 import { ContactHeroVisual, ContactJourneyVisual } from '../components/visuals'
+import { office } from '../routes/office'
 
 const requirementTypes = [
   'Custom Software',
@@ -147,8 +148,9 @@ export function ContactPage() {
                   <p>Available upon request</p>
                 </Card>
                 <Card className="contact-detail" padding="compact">
-                  <span>Location</span>
-                  <p>Bangalore, Karnataka, India</p>
+                  <span id="office-location">Office location</span>
+                  <p>{office.name}<br />{office.city}, {office.region}, {office.country}</p>
+                  <a href={office.mapUrl} target="_blank" rel="noopener noreferrer">View building on Google Maps</a>
                 </Card>
                 <Card className="contact-detail" padding="compact">
                   <span>Global</span>

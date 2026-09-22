@@ -1,4 +1,5 @@
 import { Container } from '../common'
+import { office } from '../../routes/office'
 
 type FooterLink = { href: string; label: string }
 type FooterProps = { brand?: string; className?: string; links?: FooterLink[] }
@@ -23,7 +24,7 @@ function LinkGroup({ label, links }: { label: string; links: FooterLink[] }) {
 export function Footer({ brand = 'Amiro Tech Solutions', className, links = defaultLinks }: FooterProps) {
   return <footer className={['footer', 'footer-premium', className].filter(Boolean).join(' ')}><Container><div className="footer__inner">
     <div className="footer-premium__top">
-      <div className="footer__identity"><a className="footer__brand" href="/"><img className="footer__logo" loading="lazy" src="/amiro-logo.svg" alt={brand}/></a><p>Software, AI, Voice AI, automation, and digital platforms for modern businesses.</p><div className="footer__availability"><span><i/>Based in Bangalore</span><span><i/>Serving clients globally</span></div></div>
+      <div className="footer__identity"><a className="footer__brand" href="/"><img className="footer__logo" loading="lazy" src="/amiro-logo.svg" alt={brand}/></a><p>Software, AI, Voice AI, automation, and digital platforms for modern businesses.</p><p><a className="footer__link" href="/contact#office-location">{office.name}, {office.city}</a></p><div className="footer__availability"><span><i/>Based in Bangalore</span><span><i/>Serving clients globally</span></div></div>
       <LinkGroup label="Company" links={links}/>
       <LinkGroup label="Services" links={serviceLinks}/>
       <div className="footer-premium__combined"><LinkGroup label="Products" links={productLinks}/><div className="footer__group footer-premium__contact"><p className="footer__group-title">Contact</p><div className="footer__links"><a className="footer__link footer-premium__email" href="mailto:info@amirotechsolutions.com">info@amirotechsolutions.com</a><a className="footer__link footer-premium__call" href="/contact?type=consultation">Book a Strategy Call <span>→</span></a></div><div className="footer__links footer__links--social" aria-label="Social channels">{socialLinks.map(({ label, href }) => <a className="footer__link" href={href} target="_blank" rel="noopener noreferrer" key={label}><SocialIcon name={label}/>{label}</a>)}<span aria-disabled="true" className="footer__link footer__link--disabled"><SocialIcon name="GitHub"/>GitHub</span></div></div></div>

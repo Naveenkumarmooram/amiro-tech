@@ -1,3 +1,5 @@
+import { office } from './office'
+
 export const siteUrl = 'https://www.amirotechsolutions.com'
 export const pageSeo = [
   { path: '/', title: 'Amiro Tech Solutions | Software Development & AI Services', description: 'Amiro Tech Solutions is a Bangalore-based software and AI company building custom applications, Voice AI, automation and cloud platforms for businesses worldwide.' },
@@ -11,7 +13,7 @@ export const pageSeo = [
 export const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: 'Amiro Tech Solutions', alternateName: 'Amiro Tech', url: `${siteUrl}/`, logo: `${siteUrl}/amiro-logo.svg`, email: 'info@amirotechsolutions.com', sameAs: ['https://www.linkedin.com/company/amirotechsolutions', 'https://www.instagram.com/amirotechsolutions'] },
+    { '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: 'Amiro Tech Solutions', alternateName: 'Amiro Tech', url: `${siteUrl}/`, logo: `${siteUrl}/amiro-logo.svg`, email: 'info@amirotechsolutions.com', address: { '@type': 'PostalAddress', streetAddress: office.name, addressLocality: office.city, addressRegion: office.region, addressCountry: 'IN' }, sameAs: ['https://www.linkedin.com/company/amirotechsolutions', 'https://www.instagram.com/amirotechsolutions'] },
     { '@type': 'WebSite', '@id': `${siteUrl}/#website`, name: 'Amiro Tech Solutions', alternateName: ['Amiro Tech', 'amirotechsolutions.com'], url: `${siteUrl}/`, publisher: { '@id': `${siteUrl}/#organization` } },
   ],
 }
