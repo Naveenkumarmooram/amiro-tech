@@ -103,6 +103,13 @@
   .ai-architecture__core-status { font-size: 12px; }
   .ai-architecture__core { min-height: 230px; }
 }
+/* Keep the two featured services, then fit services 03–06 in one desktop row. */
+@media (min-width: 75rem) {
+  .services-core__grid > .services-core__card:nth-child(n + 3) { grid-column: span 3; }
+}
+@media (min-width: 48rem) and (max-width: 74.999rem) {
+  .services-core__grid > .services-core__card { grid-column: span 6; }
+}
 @media (max-width: 64rem) {
   .process-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .value-strip__core { min-height: 0; }
