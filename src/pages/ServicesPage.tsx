@@ -1,6 +1,5 @@
 import { Button, Container, Section } from '../components/common'
 import { ServicesHeroVisual } from '../components/visuals'
-import '../styles/services-hero.css'
 
 const coreServices = [
   { capabilities: ['Enterprise applications', 'SaaS platforms', 'Operational systems'], description: 'Custom software development for enterprise applications and SaaS platforms, built around your workflows and users.', icon: '⌘', title: 'Custom Software Development' },
