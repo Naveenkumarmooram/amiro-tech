@@ -13,7 +13,7 @@ export const pageSeo = [
 export const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: 'Amiro Tech Solutions', alternateName: 'Amiro Tech', url: `${siteUrl}/`, logo: `${siteUrl}/amiro-logo.svg`, email: 'info@amirotechsolutions.com', address: { '@type': 'PostalAddress', streetAddress: office.name, addressLocality: office.city, addressRegion: office.region, addressCountry: 'IN' }, sameAs: ['https://www.linkedin.com/company/amirotechsolutions', 'https://www.instagram.com/amirotechsolutions'] },
+    { '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: office.companyName, legalName: office.companyName, alternateName: ['Amiro Tech Solutions', 'Amiro Tech'], url: `${siteUrl}/`, logo: `${siteUrl}/amiro-logo.svg`, email: 'info@amirotechsolutions.com', address: { '@type': 'PostalAddress', streetAddress: `${office.name}, ${office.street}`, addressLocality: office.city, addressRegion: office.region, postalCode: office.postalCode, addressCountry: 'IN' }, sameAs: ['https://www.linkedin.com/company/amirotechsolutions', 'https://www.instagram.com/amirotechsolutions'] },
     { '@type': 'WebSite', '@id': `${siteUrl}/#website`, name: 'Amiro Tech Solutions', alternateName: ['Amiro Tech', 'amirotechsolutions.com'], url: `${siteUrl}/`, publisher: { '@id': `${siteUrl}/#organization` } },
   ],
 }

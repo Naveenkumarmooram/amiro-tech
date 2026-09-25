@@ -149,7 +149,7 @@ export function ContactPage() {
                 </Card>
                 <Card className="contact-detail" padding="compact">
                   <span id="office-location">Office location</span>
-                  <p>{office.name}<br />{office.city}, {office.region}, {office.country}</p>
+                  <p><strong>{office.companyName}</strong><br />{office.name}<br />{office.street}<br />{office.city}, {office.region} – {office.postalCode}, {office.country}</p>
                   <a href={office.mapUrl} target="_blank" rel="noopener noreferrer">View building on Google Maps</a>
                 </Card>
                 <Card className="contact-detail" padding="compact">
