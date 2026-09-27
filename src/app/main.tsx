@@ -4,6 +4,7 @@ import '../styles/index.css'
 import '../styles/polish.css'
 import '../styles/responsive.css'
 import '../styles/hero-rotation.css'
+import '../styles/refinement.css'
 import App from './App'
 
 createRoot(document.getElementById('root')!).render(

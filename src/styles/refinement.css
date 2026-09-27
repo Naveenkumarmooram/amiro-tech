@@ -1,0 +1,102 @@
+/* Editorial polish. Preserve existing grids, diagrams, brand colors and behavior. */
+main :is(h1, h2, h3) { text-wrap: balance; }
+main :is(.section-header__description, .page-hero__description, .page-card__text) {
+  color: #b6bac2;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+main :is(.section-header, .services-section-heading) { margin-bottom: clamp(28px, 3.5vw, 48px); }
+main :is(.page-card, .services-core__card, .services-capabilities__card) {
+  border-color: rgb(255 255 255 / .09);
+  box-shadow: 0 8px 24px rgb(0 0 0 / .12);
+}
+main :is(.page-card__title, .services-core__card h3) { line-height: 1.3; letter-spacing: -.025em; }
+main .button { border-radius: 10px; font-weight: 600; transition: background-color 220ms, border-color 220ms, box-shadow 220ms; }
+:is(a, button, input, select, textarea):focus-visible { outline: 2px solid #e7a300; outline-offset: 4px; }
+main [id] { scroll-margin-top: 112px; }
+.footer-premium .footer__link { overflow-wrap: anywhere; line-height: 1.65; }
+.contact-sidebar p { overflow-wrap: anywhere; }
+.contact-form .contact-form__delivery-note { margin: 0; color: #b6bac2; font-size: 14px; line-height: 1.65; text-transform: none; letter-spacing: normal; overflow-wrap: anywhere; }
+.contact-form :is(input, select, textarea) { min-height: 48px; }
+.services-core__card > a { padding-block: 10px; }
+@media (min-width: 64rem) {
+  main .section { padding-block: clamp(64px, 6vw, 88px); }
+  main .section--compact { padding-block: 48px; }
+  main :is(.section-header__title, .services-section-heading h2) {
+    font-size: clamp(34px, 3.1vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -.035em;
+  }
+  main :is(.services-premium-hero__description, .products-premium-hero__description, .about-premium-hero__description) {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #b6bac2;
+    max-width: 60ch;
+  }
+}
+@media (max-width: 47.999rem) {
+  main .section { padding-block: 48px; }
+  main .section--compact { padding-block: 32px; }
+  main :is(.services-premium-hero, .products-premium-hero, .about-premium-hero, .contact-hero) { padding-block: 32px 48px; }
+  main :is(.page-card, .services-core__card) { padding: 24px; }
+  main :is(.page-card__text, .services-core__card > p, .services-core__card li) { font-size: 16px; line-height: 1.65; }
+  main .button { min-height: 48px; }
+  .footer-premium .footer__link { display: inline-block; padding-block: 6px; }
+  .services-premium-hero .solution-architecture__canvas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 16px; gap: 12px; }
+  .services-premium-hero .solution-architecture__core,
+  .services-premium-hero .solution-architecture__foundation,
+  .services-premium-hero .solution-architecture__node--automation { grid-column: 1 / -1; }
+  .services-premium-hero .solution-architecture__node { min-width: 0; flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px; }
+  .services-premium-hero .solution-architecture__node strong { font-size: 16px; }
+  .services-premium-hero .solution-architecture__node small { font-size: 14px; }
+  .services-premium-hero .solution-architecture__foundation > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services-premium-hero .solution-architecture__foundation { padding: 12px; }
+  .services-premium-hero .solution-architecture__foundation p { min-width: 0; gap: 4px; padding: 8px 6px; }
+  .services-premium-hero .solution-architecture__foundation p strong { font-size: 13px; }
+  .hero-banners__controls { gap: 4px 12px; }
+}
+/* Products, company, delivery and contact: consistent surfaces and reading rhythm. */
+.products-section .product-card,
+.about-trust .about-trust__item,
+.products-audience__card,
+.about-journey-card,
+.contact-next__card {
+  border: 1px solid rgb(255 255 255 / .09);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #191b20, #111317);
+  box-shadow: 0 12px 32px rgb(0 0 0 / .14), inset 0 1px rgb(255 255 255 / .025);
+}
+.products-section .product-card__title { font-size: clamp(22px, 1.8vw, 26px); line-height: 1.3; letter-spacing: -.025em; }
+.products-section .product-card__description { color: #b6bac2; font-size: 16px; line-height: 1.75; }
+.products-section .product-card__features { gap: 12px; }
+.products-section .product-card__feature { color: #c0c4cc; line-height: 1.6; }
+.products-section .product-card__cta { min-height: 48px; }
+.about-trust .about-trust__label h3 { font-size: 20px; line-height: 1.35; }
+.about-trust .about-trust__item > p { margin-top: 12px; color: #b6bac2; font-size: 16px; font-weight: 400; line-height: 1.7; }
+.process-timeline .process-timeline__item { border-color: #ffffff17; background: linear-gradient(150deg, #191b20, #111317); }
+.process-timeline .page-card__text,
+.case-showcase .section-header__description { font-size: 16px; line-height: 1.75; color: #b6bac2; }
+.page-list { line-height: 1.75; color: #b6bac2; }
+.page-list li + li { margin-top: 10px; }
+.case-tags { gap: 10px; }
+.case-tag { border-color: #ffffff17; background: #ffffff04; color: #c0c4cc; }
+.contact-form :is(input, select, textarea) { border-color: #ffffff24; background-color: #101216; border-radius: 10px; }
+.contact-form :is(input, textarea)::placeholder { color: #9299a5; opacity: 1; }
+.contact-next__card .page-card__title { font-size: 21px; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .products-section .product-card:hover { border-color: #e7a30040; box-shadow: 0 16px 36px #0003; transform: translateY(-2px); }
+}
+@media (max-width: 47.999rem) {
+  .products-section .product-card,
+  .about-trust .about-trust__item,
+  .products-audience__card,
+  .about-journey-card { padding: 24px; border-radius: 16px; }
+  .products-section .product-card__cta { width: 100%; }
+  .delivery-timeline__step { padding: 16px 12px; gap: 12px; }
+  .delivery-timeline__step p { line-height: 1.6; }
+  .contact-next__card .page-card__title { font-size: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  main .button { transition: none; }
+}

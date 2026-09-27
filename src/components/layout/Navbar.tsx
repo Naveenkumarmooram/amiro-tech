@@ -61,13 +61,14 @@ export function Navbar({
           <button
             aria-controls="mobile-navigation"
             aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? 'Close navigation' : 'Explore site navigation'}
             ref={toggleRef}
             className="navbar__menu-button"
             onClick={() => setIsMenuOpen((current) => !current)}
             type="button"
           >
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d={isMenuOpen ? 'm6 6 12 12M18 6 6 18' : 'M4 6h16M4 12h16M4 18h16'} /></svg>
-            {isMenuOpen ? 'Close' : 'Menu'}
+            {isMenuOpen ? 'Close' : 'Explore'}
           </button>
           <div className="navbar__links">
             {items.map((item) => (

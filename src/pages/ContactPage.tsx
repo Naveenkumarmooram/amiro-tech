@@ -56,6 +56,7 @@ const faqs = [
 export function ContactPage() {
   const [requirementType, setRequirementType] = useState('')
   const [productInterest, setProductInterest] = useState('Not Applicable')
+  const [emailDraftOpened, setEmailDraftOpened] = useState(false)
 
   const nextStepRecommendation = useMemo(() => {
     if (requirementType === 'Product Demo' || productInterest !== 'Not Applicable') {
@@ -103,6 +104,7 @@ export function ContactPage() {
       inquiry.message,
     ].join('\n')
 
+    setEmailDraftOpened(true)
     window.location.href = `mailto:info@amirotechsolutions.com?subject=${encodeURIComponent(
       'New Website Inquiry',
     )}&body=${encodeURIComponent(body)}`
@@ -188,19 +190,19 @@ export function ContactPage() {
                   <div className="form-grid">
                     <label>
                       Name
-                      <input name="name" placeholder="Your name" required type="text" />
+                      <input autoComplete="name" name="name" placeholder="Your name" required type="text" />
                     </label>
                     <label>
                       Company
-                      <input name="company" placeholder="Company name" type="text" />
+                      <input autoComplete="organization" name="company" placeholder="Company name" type="text" />
                     </label>
                     <label>
                       Business Email
-                      <input name="email" placeholder="you@company.com" required type="email" />
+                      <input autoComplete="email" name="email" placeholder="you@company.com" required type="email" />
                     </label>
                     <label>
                       Phone
-                      <input name="phone" placeholder="Phone number" type="tel" />
+                      <input autoComplete="tel" name="phone" placeholder="Phone number" type="tel" />
                     </label>
                   </div>
                   <label>
@@ -264,12 +266,17 @@ export function ContactPage() {
                   </div>
                   <div className="contact-form__actions">
                     <Button className="contact-form__submit" size="lg" type="submit">
-                      Submit Inquiry
+                      Prepare Email Inquiry
                     </Button>
                     <a className="contact-form__email-link" href="mailto:info@amirotechsolutions.com">
                       Email directly
                     </a>
                   </div>
+                  <p className="contact-form__delivery-note" role="status">
+                    {emailDraftOpened
+                      ? 'Your email app should open with your enquiry. Please send the email there to complete your request. If nothing opens, email info@amirotechsolutions.com directly; your details remain in this form.'
+                      : 'Opens a draft in your email app. Review and send it to complete your enquiry. No message is sent automatically.'}
+                  </p>
                 </form>
                 <ContactJourneyVisual />
               </div>
