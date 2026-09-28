@@ -34,7 +34,7 @@ export function HeroSection({ className }: { className?: string }) {
   const [focused, setFocused] = useState(false)
   const [visible, setVisible] = useState(false)
   const [reduced, setReduced] = useState(() => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-  const [delay, setDelay] = useState(5500)
+  const [delay, setDelay] = useState(8000)
   const [interaction, setInteraction] = useState(0)
   const root = useRef<HTMLDivElement>(null)
   const touch = useRef({ x: 0, y: 0 })
@@ -49,7 +49,7 @@ export function HeroSection({ className }: { className?: string }) {
   useEffect(() => {
     if (paused || hovered || focused || reduced || !visible) return
     const timer = setTimeout(() => {
-      if (!document.hidden) { setActive(value => (value + 1) % banners.length); setDelay(5500) }
+      if (!document.hidden) { setActive(value => (value + 1) % banners.length); setDelay(8000) }
       setInteraction(value => value + 1)
     }, delay)
     return () => clearTimeout(timer)

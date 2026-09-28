@@ -1,7 +1,6 @@
 import { type FormEvent, useMemo, useState } from 'react'
 
 import { Button, Card, Container, Grid, Section, SectionHeader, Stack } from '../components/common'
-import { ContactHeroVisual, ContactJourneyVisual } from '../components/visuals'
 import { office } from '../routes/office'
 
 const requirementTypes = [
@@ -24,6 +23,7 @@ const productInterests = [
   'HR Management System',
   'Voice AI Agent',
   'Business Operations Platform',
+  'Other',
 ]
 
 const nextSteps = ['Review', 'Discovery Call', 'Solution Recommendation', 'Proposal / Demo']
@@ -59,6 +59,9 @@ export function ContactPage() {
   const [emailDraftOpened, setEmailDraftOpened] = useState(false)
 
   const nextStepRecommendation = useMemo(() => {
+    if (productInterest === 'Other') {
+      return 'Tell us which product or capability you have in mind in the project details below.'
+    }
     if (requirementType === 'Product Demo' || productInterest !== 'Not Applicable') {
       return 'We will prepare a focused product demo conversation around your selected product.'
     }
@@ -111,22 +114,20 @@ export function ContactPage() {
   }
 
   return (
-    <>
+    <div className="contact-redesign">
       <Section className="page-hero contact-hero" spacing="spacious">
         <Container>
           <div className="inner-hero-layout contact-hero__layout">
             <Stack className="page-hero__content contact-hero__content" gap="xl">
               <p className="page-hero__eyebrow">Contact</p>
               <h1 className="page-hero__title">
-                <span>Start a Conversation</span>
-                <span>About Your Next System</span>
+                Let’s talk about your next project.
               </h1>
               <p className="page-hero__description">
                 Tell us about your business challenge, software requirement, AI initiative, or the
                 product you would like to explore.
               </p>
             </Stack>
-            <ContactHeroVisual />
           </div>
         </Container>
       </Section>
@@ -136,9 +137,9 @@ export function ContactPage() {
           <div className="contact-layout contact-layout--premium">
             <Stack className="contact-sidebar" gap="xl">
               <SectionHeader
-                description="We will review your inquiry and contact you to discuss the best solution."
+                description="Share your goals, ask a question, or explore a product. We’ll help you find the right next step."
                 eyebrow="Contact Details"
-                title="Business-first inquiry support from Bangalore to global clients."
+                title="A direct line to our team."
               />
               <Grid columns={1} gap="sm">
                 <Card className="contact-detail" padding="compact">
@@ -165,10 +166,9 @@ export function ContactPage() {
               <div className="contact-form-shell">
                 <form className="contact-form" onSubmit={handleSubmit}>
                   <Stack gap="sm">
-                    <h2 className="contact-form__title">Tell us what you need</h2>
+                    <h2 className="contact-form__title">Tell us about your project</h2>
                     <p className="contact-form__helper">
-                      We review every inquiry before recommending a project path, product demo, or
-                      discovery call.
+                      A few details are enough to start. Fields marked * are required.
                     </p>
                   </Stack>
                   <div className="contact-quick" aria-label="Quick inquiry choices">
@@ -189,24 +189,24 @@ export function ContactPage() {
                   </div>
                   <div className="form-grid">
                     <label>
-                      Name
+                      Name *
                       <input autoComplete="name" name="name" placeholder="Your name" required type="text" />
                     </label>
                     <label>
-                      Company
+                      Company (optional)
                       <input autoComplete="organization" name="company" placeholder="Company name" type="text" />
                     </label>
                     <label>
-                      Business Email
+                      Email *
                       <input autoComplete="email" name="email" placeholder="you@company.com" required type="email" />
                     </label>
                     <label>
-                      Phone
+                      Phone (optional)
                       <input autoComplete="tel" name="phone" placeholder="Phone number" type="tel" />
                     </label>
                   </div>
                   <label>
-                    Requirement Type
+                    How can we help? *
                     <select
                       name="requirementType"
                       onChange={(event) => setRequirementType(event.target.value)}
@@ -222,7 +222,7 @@ export function ContactPage() {
                     </select>
                   </label>
                   <label>
-                    Product Interest
+                    Product interest (optional)
                     <select
                       name="productInterest"
                       onChange={(event) => setProductInterest(event.target.value)}
@@ -252,7 +252,7 @@ export function ContactPage() {
                     ))}
                   </div>
                   <label>
-                    Message
+                    Project details *
                     <textarea
                       name="message"
                       placeholder="Tell us about your business challenge, current workflow, timeline, or product interest."
@@ -278,7 +278,6 @@ export function ContactPage() {
                       : 'Opens a draft in your email app. Review and send it to complete your enquiry. No message is sent automatically.'}
                   </p>
                 </form>
-                <ContactJourneyVisual />
               </div>
               <div className="contact-trust" aria-label="Trust indicators">
                 {trustItems.map((item) => (
@@ -327,6 +326,6 @@ export function ContactPage() {
           </Stack>
         </Container>
       </Section>
-    </>
+    </div>
   )
 }

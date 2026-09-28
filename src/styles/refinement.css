@@ -1,4 +1,62 @@
 /* Editorial polish. Preserve existing grids, diagrams, brand colors and behavior. */
+/* Informational labels are plain text, not button-shaped controls on touch screens. */
+@media (max-width: 63.999rem) {
+  body :is(.contact-trust__chip, .case-tag, .services-overview__tag, .technology-card__tag, .products-premium-hero__badge, .footer__availability > span) {
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    padding: 4px 0;
+    min-height: 0;
+    color: #b6bac2;
+    cursor: default;
+    transform: none;
+    transition: none;
+  }
+  body :is(.services-overview__tags, .technology-card__tags, .case-tags, .contact-trust, .footer__availability) { gap: 8px 16px; }
+  body :is(.services-overview__tag, .technology-card__tag, .case-tag)::before { content: '•'; color: #e7a300; margin-right: 8px; }
+}
+.contact-redesign .contact-hero { min-height: 0; padding: 56px 0 32px; background: #0b0c0f; }
+.contact-redesign .contact-hero::before, .contact-redesign .contact-hero::after { display: none; }
+.contact-redesign .contact-hero__layout { display: block; min-height: 0; }
+.contact-redesign .contact-hero__content { max-width: 780px; gap: 20px; }
+.contact-redesign .contact-hero .page-hero__title { font-size: clamp(34px, 4vw, 52px); line-height: 1.12; letter-spacing: -.035em; max-width: 22ch; margin: 0; }
+.contact-redesign .contact-hero .page-hero__description { max-width: 62ch; font-size: 17px; line-height: 1.7; margin: 0; }
+.contact-redesign .contact-section { padding: 24px 0 72px; background: #0b0c0f; }
+.contact-redesign .contact-layout--premium { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; align-items: start; }
+.contact-redesign .contact-sidebar { gap: 24px; }
+.contact-redesign .contact-sidebar .section-header { margin: 0; }
+.contact-redesign .contact-sidebar .section-header__title { font-size: 28px; line-height: 1.25; }
+.contact-redesign .contact-detail { padding: 20px; border: 1px solid #ffffff12; border-radius: 12px; background: #121419; box-shadow: none; }
+.contact-redesign .contact-detail p { font-size: 15px; font-weight: 400; line-height: 1.75; color: #b6bac2; }
+.contact-redesign .contact-detail a { display: inline-block; font-size: 15px; line-height: 1.6; padding-block: 6px; overflow-wrap: anywhere; }
+.contact-redesign .contact-form-card { padding: 32px; border-radius: 20px; background: #14161b; border: 1px solid #ffffff17; box-shadow: 0 16px 40px #0002; }
+.contact-redesign .contact-form-card::before { display: none; }
+.contact-redesign .contact-form-shell { display: block; }
+.contact-redesign .contact-form { gap: 24px; }
+.contact-redesign .contact-form__title { font-size: 26px; line-height: 1.3; }
+.contact-redesign .contact-form__helper { font-size: 15px; line-height: 1.65; color: #b6bac2; }
+.contact-redesign .contact-form label { gap: 8px; font-size: 14px; color: #e2e4e9; }
+.contact-redesign .form-grid { gap: 20px; }
+.contact-redesign .contact-form :is(input, select, textarea) { width: 100%; padding: 12px 14px; font-size: 16px; font-weight: 400; }
+.contact-redesign .contact-quick__options { gap: 8px; }
+.contact-redesign .contact-quick__button, .contact-redesign .contact-product-picks__button { min-height: 44px; padding: 10px 12px; font-size: 13px; border-radius: 8px; }
+.contact-redesign .contact-form__insight { padding: 16px; background: #e7a30005; box-shadow: none; }
+.contact-redesign .contact-form__insight p { font-weight: 400; font-size: 14px; line-height: 1.65; }
+.contact-redesign .contact-trust { gap: 8px; margin-top: 24px; }
+.contact-redesign .contact-trust__chip { font-size: 12px; background: none; border-color: #ffffff12; }
+@media (max-width: 63.999rem) {
+  .contact-redesign .contact-layout--premium { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .contact-redesign .contact-form-card { order: -1; }
+}
+@media (max-width: 47.999rem) {
+  main .contact-redesign .contact-hero { padding: 32px 0 24px; }
+  .contact-redesign .contact-form-card { padding: 20px; border-radius: 16px; }
+  .contact-redesign .form-grid { grid-template-columns: minmax(0, 1fr); }
+  .contact-redesign .contact-form__actions { align-items: stretch; flex-direction: column; gap: 12px; }
+  .contact-redesign .contact-form__submit { width: 100%; }
+  .contact-redesign .contact-form__email-link { text-align: center; padding: 12px; }
+}
 main :is(h1, h2, h3) { text-wrap: balance; }
 main :is(.section-header__description, .page-hero__description, .page-card__text) {
   color: #b6bac2;
