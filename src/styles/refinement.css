@@ -16,12 +16,13 @@
   body :is(.services-overview__tags, .technology-card__tags, .case-tags, .contact-trust, .footer__availability) { gap: 8px 16px; }
   body :is(.services-overview__tag, .technology-card__tag, .case-tag)::before { content: '•'; color: #e7a300; margin-right: 8px; }
 }
-.contact-redesign .contact-hero { min-height: 0; padding: 56px 0 32px; background: #0b0c0f; }
+.contact-redesign .contact-hero { min-height: 0; padding: 48px 0 32px; background: #0b0c0f; border-bottom: 0; }
 .contact-redesign .contact-hero::before, .contact-redesign .contact-hero::after { display: none; }
 .contact-redesign .contact-hero__layout { display: block; min-height: 0; }
-.contact-redesign .contact-hero__content { max-width: 780px; gap: 20px; }
-.contact-redesign .contact-hero .page-hero__title { font-size: clamp(34px, 4vw, 52px); line-height: 1.12; letter-spacing: -.035em; max-width: 22ch; margin: 0; }
-.contact-redesign .contact-hero .page-hero__description { max-width: 62ch; font-size: 17px; line-height: 1.7; margin: 0; }
+.contact-redesign .contact-hero__content { width: 100%; max-width: 800px; margin-inline: auto; gap: 16px; align-items: center; text-align: center; }
+.contact-redesign .contact-hero .page-hero__eyebrow { margin: 0; font-size: 12px; letter-spacing: .14em; justify-content: center; }
+.contact-redesign .contact-hero .page-hero__title { font-size: clamp(32px, 3.2vw, 44px); font-weight: 650; line-height: 1.15; letter-spacing: -.035em; max-width: 100%; margin: 0; }
+.contact-redesign .contact-hero .page-hero__description { max-width: 58ch; font-size: 16px; line-height: 1.7; margin: 0; color: #b6bac2; }
 .contact-redesign .contact-section { padding: 24px 0 72px; background: #0b0c0f; }
 .contact-redesign .contact-layout--premium { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; align-items: start; }
 .contact-redesign .contact-sidebar { gap: 24px; }

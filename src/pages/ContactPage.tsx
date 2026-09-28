@@ -1,4 +1,4 @@
-import { type FormEvent, useMemo, useState } from 'react'
+import { type FormEvent, useEffect, useMemo, useState } from 'react'
 
 import { Button, Card, Container, Grid, Section, SectionHeader, Stack } from '../components/common'
 import { office } from '../routes/office'
@@ -10,6 +10,10 @@ const requirementTypes = [
   'AI Agent',
   'Automation',
   'Product Demo',
+  'Product Waitlist',
+  'Early Access',
+  'Consultation',
+  'Cloud & Platform Engineering',
   'SaaS Platform',
   'Dashboard & Reporting',
   'System Integration',
@@ -36,7 +40,6 @@ const trustItems = [
 ]
 
 const quickInquiryTypes = ['Custom Software', 'AI Solution', 'Voice AI', 'Product Demo', 'Automation']
-const quickProducts = ['IMS for NDT Labs', 'Voice AI Agent', 'Business Operations Platform']
 
 const faqs = [
   {
@@ -57,12 +60,28 @@ export function ContactPage() {
   const [requirementType, setRequirementType] = useState('')
   const [productInterest, setProductInterest] = useState('Not Applicable')
   const [emailDraftOpened, setEmailDraftOpened] = useState(false)
+  const [delivery, setDelivery] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const directSubmission = import.meta.env.VITE_CONTACT_DIRECT === 'true'
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search)
+    const products: Record<string, string> = { ims: 'IMS for NDT Labs', hr: 'HR Management System', 'voice-ai': 'Voice AI Agent', 'business-ops': 'Business Operations Platform' }
+    const intents: Record<string, string> = { 'product-demo': 'Product Demo', waitlist: 'Product Waitlist', 'early-access': 'Early Access', consultation: 'Consultation', 'product-enquiry': 'Other' }
+    const service = query.get('service') ?? ''
+    // Static HTML has no query string; apply browser-only defaults after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setRequirementType(requirementTypes.includes(service) ? service : intents[query.get('type') ?? ''] ?? '')
+    setProductInterest(products[query.get('product') ?? ''] ?? 'Not Applicable')
+  }, [])
 
   const nextStepRecommendation = useMemo(() => {
+    if (['Product Waitlist', 'Early Access'].includes(requirementType)) {
+      return 'Send an interest request to our team. We will confirm availability and next steps; this does not automatically enroll you in a mailing list.'
+    }
     if (productInterest === 'Other') {
       return 'Tell us which product or capability you have in mind in the project details below.'
     }
-    if (requirementType === 'Product Demo' || productInterest !== 'Not Applicable') {
+    if (requirementType === 'Product Demo') {
       return 'We will prepare a focused product demo conversation around your selected product.'
     }
 
@@ -81,8 +100,9 @@ export function ContactPage() {
     return 'Choose a quick inquiry type or describe your requirement, and we will recommend the clearest next step.'
   }, [productInterest, requirementType])
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    if (delivery === 'sending') return
 
     const formData = new FormData(event.currentTarget)
     const inquiry = {
@@ -93,6 +113,23 @@ export function ContactPage() {
       phone: String(formData.get('phone') ?? ''),
       productInterest: String(formData.get('productInterest') ?? ''),
       requirementType: String(formData.get('requirementType') ?? ''),
+      website: String(formData.get('website') ?? ''),
+    }
+
+    if (directSubmission) {
+      setDelivery('sending')
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(inquiry), signal: AbortSignal.timeout(20000),
+        })
+        const result = await response.json()
+        if (!response.ok || result.accepted !== true) throw new Error('Submission not accepted')
+        setDelivery('sent')
+      } catch {
+        setDelivery('error')
+      }
+      return
     }
 
     const body = [
@@ -121,7 +158,7 @@ export function ContactPage() {
             <Stack className="page-hero__content contact-hero__content" gap="xl">
               <p className="page-hero__eyebrow">Contact</p>
               <h1 className="page-hero__title">
-                Let’s talk about your next project.
+                Let’s build what’s next.
               </h1>
               <p className="page-hero__description">
                 Tell us about your business challenge, software requirement, AI initiative, or the
@@ -147,10 +184,6 @@ export function ContactPage() {
                   <a href="mailto:info@amirotechsolutions.com">info@amirotechsolutions.com</a>
                 </Card>
                 <Card className="contact-detail" padding="compact">
-                  <span>Phone</span>
-                  <p>Available upon request</p>
-                </Card>
-                <Card className="contact-detail" padding="compact">
                   <span id="office-location">Office location</span>
                   <p><strong>{office.companyName}</strong><br />{office.name}<br />{office.street}<br />{office.city}, {office.region} – {office.postalCode}, {office.country}</p>
                   <a href={office.mapUrl} target="_blank" rel="noopener noreferrer">View building on Google Maps</a>
@@ -165,6 +198,7 @@ export function ContactPage() {
             <Card className="contact-form-card" padding="spacious">
               <div className="contact-form-shell">
                 <form className="contact-form" onSubmit={handleSubmit}>
+                  <div hidden aria-hidden="true"><label>Leave empty<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
                   <Stack gap="sm">
                     <h2 className="contact-form__title">Tell us about your project</h2>
                     <p className="contact-form__helper">
@@ -233,24 +267,6 @@ export function ContactPage() {
                       ))}
                     </select>
                   </label>
-                  <div className="contact-product-picks" aria-label="Product interest shortcuts">
-                    {quickProducts.map((product) => (
-                      <button
-                        aria-pressed={productInterest === product}
-                        className="contact-product-picks__button"
-                        key={product}
-                        onClick={() => {
-                          setProductInterest(product)
-                          if (!requirementType) {
-                            setRequirementType('Product Demo')
-                          }
-                        }}
-                        type="button"
-                      >
-                        {product}
-                      </button>
-                    ))}
-                  </div>
                   <label>
                     Project details *
                     <textarea
@@ -265,18 +281,24 @@ export function ContactPage() {
                     <p>{nextStepRecommendation}</p>
                   </div>
                   <div className="contact-form__actions">
-                    <Button className="contact-form__submit" size="lg" type="submit">
-                      Prepare Email Inquiry
+                    <Button className="contact-form__submit" size="lg" type="submit" disabled={delivery === 'sending' || delivery === 'sent'}>
+                      {delivery === 'sending' ? 'Sending…' : delivery === 'sent' ? 'Request submitted' : directSubmission ? 'Send enquiry' : 'Prepare Email Inquiry'}
                     </Button>
                     <a className="contact-form__email-link" href="mailto:info@amirotechsolutions.com">
                       Email directly
                     </a>
                   </div>
                   <p className="contact-form__delivery-note" role="status">
-                    {emailDraftOpened
+                    {directSubmission
+                      ? delivery === 'sent' ? 'Your enquiry was accepted for email delivery. Our team will review your request.' : delivery === 'error' ? 'We could not confirm submission. Your details are still here. Please email us directly if you need help.' : 'Your enquiry will be emailed to our team when you select Send enquiry.'
+                      : emailDraftOpened
                       ? 'Your email app should open with your enquiry. Please send the email there to complete your request. If nothing opens, email info@amirotechsolutions.com directly; your details remain in this form.'
                       : 'Opens a draft in your email app. Review and send it to complete your enquiry. No message is sent automatically.'}
                   </p>
+                  <details className="contact-form__privacy" id="enquiry-privacy">
+                    <summary>How your enquiry details are used</summary>
+                    <p>This form prepares or sends your contact details and message to Amiro Tech Solutions Pvt Ltd to respond to your enquiry. Direct submissions pass through our email delivery provider. Please do not include passwords, payment information, or confidential project data. For questions about your information, contact <a href="mailto:info@amirotechsolutions.com">info@amirotechsolutions.com</a>.</p>
+                  </details>
                 </form>
               </div>
               <div className="contact-trust" aria-label="Trust indicators">
