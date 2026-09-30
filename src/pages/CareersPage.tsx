@@ -36,10 +36,30 @@ function applicationLink(title: string) {
   return `mailto:info@amirotechsolutions.com?subject=${encodeURIComponent(`Career application — ${title}`)}&body=${encodeURIComponent(`Hello Amiro Tech team,\n\nI would like to apply for the ${title} role.\n\nName:\nExperience:\nCurrent location:\nNotice period / availability:\nPortfolio or project links (optional):\n\nI have attached my resume.\n\nThank you.`)}`
 }
 
+function webmailLink(title: string, provider: 'gmail' | 'outlook') {
+  const draft = new URL(applicationLink(title))
+  const subject = draft.searchParams.get('subject') ?? ''
+  const body = draft.searchParams.get('body') ?? ''
+  if (provider === 'gmail') {
+    return `https://mail.google.com/mail/?${new URLSearchParams({ view: 'cm', fs: '1', to: 'info@amirotechsolutions.com', su: subject, body })}`
+  }
+  return `https://outlook.live.com/mail/0/deeplink/compose?${new URLSearchParams({ to: 'info@amirotechsolutions.com', subject, body })}`
+}
+
 export function CareersPage() {
   const [search, setSearch] = useState('')
   const [team, setTeam] = useState('')
   const [technology, setTechnology] = useState('')
+  const [applyingFor, setApplyingFor] = useState<string | null>(null)
+  const [copyStatus, setCopyStatus] = useState('')
+  async function copyApplication(title: string) {
+    try {
+      await navigator.clipboard.writeText(`To: info@amirotechsolutions.com\nSubject: Career application — ${title}\n\nPlease attach your resume and include your experience, current location, and availability.`)
+      setCopyStatus('Copied. Paste these details into your email service, attach your resume, and send your application.')
+    } catch {
+      setCopyStatus('Copy is unavailable in this browser. Select and copy the email address and subject shown above.')
+    }
+  }
   const filteredRoles = roles.filter(role =>
     (!team || role.discipline === team) && (!technology || role.skills.includes(technology)) &&
     `${role.title} ${role.description} ${role.skills.join(' ')} Bangalore Bengaluru Hybrid`.toLowerCase().includes(search.trim().toLowerCase()),
@@ -81,7 +101,22 @@ export function CareersPage() {
         <p>{role.description}</p>
         <ul className="careers-skills" aria-label="Technology stack">{role.skills.map(skill => <li key={skill}>{skill}</li>)}</ul>
         </div>
-        <a className="careers-apply" href={applicationLink(role.title)}>Apply now <span aria-hidden="true">↗</span><span className="careers-sr-only"> — {role.title} by email</span></a>
+        <button className="careers-apply" type="button" aria-expanded={applyingFor === role.id} aria-controls={`${role.id}-application`} onClick={() => { setApplyingFor(applyingFor === role.id ? null : role.id); setCopyStatus('') }}>Apply now <span aria-hidden="true">↗</span><span className="careers-sr-only"> — {role.title}</span></button>
+        {applyingFor === role.id && <section className="careers-apply-panel" id={`${role.id}-application`} aria-label={`Apply for ${role.title}`}>
+          <h4>Apply for {role.title}</h4>
+          <p>Send your resume with your experience, current location, and availability.</p>
+          <dl><dt>Email</dt><dd>info@amirotechsolutions.com</dd><dt>Subject</dt><dd>Career application — {role.title}</dd></dl>
+          <details className="careers-apply-dropdown">
+            <summary>Choose application option</summary>
+            <div className="careers-apply-panel__actions">
+              <a href={webmailLink(role.title, 'gmail')} target="_blank" rel="noopener noreferrer">Open Gmail ↗</a>
+              <a href={webmailLink(role.title, 'outlook')} target="_blank" rel="noopener noreferrer">Open Outlook ↗</a>
+              <button type="button" onClick={() => copyApplication(role.title)}>Copy application details</button>
+            </div>
+          </details>
+          <p className="careers-apply-panel__hint">Choose your email service to compose in a new browser tab. You may need to sign in. Attach your resume, review, and send. If a draft does not appear after sign-in, copy the details above into a new email. No application is sent automatically.</p>
+          <p role="status">{copyStatus}</p>
+        </section>}
         <details className="careers-details"><summary>View role details</summary><div><h4>What you’ll work on</h4><ul>{role.responsibilities.map(item => <li key={item}>{item}</li>)}</ul><h4>What you’ll bring</h4><ul>{role.requirements.map(item => <li key={item}>{item}</li>)}</ul></div></details>
       </article>)}</div>
       {filteredRoles.length === 0 && <div className="careers-empty"><h3>No matching opportunities</h3><p>Try another keyword or clear your filters to see our current openings.</p><button type="button" onClick={resetFilters}>View all roles</button></div>}
