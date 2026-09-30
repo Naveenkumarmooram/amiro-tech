@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import console from 'node:console'
 import process from 'node:process'
 import handler from '../api/contact.js'
 

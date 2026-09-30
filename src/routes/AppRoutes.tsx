@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { PageLayout } from '../components/layout'
 import {
   AboutPage,
+  CareersPage,
   CaseStudiesPage,
   ContactPage,
   HomePage,
@@ -13,6 +14,7 @@ import {
 import { pageSeo, siteUrl } from './seo'
 
 const routes = [
+  { path: '/careers', Component: CareersPage },
   { path: '/', Component: HomePage },
   { path: '/services', Component: ServicesPage },
   { path: '/products', Component: ProductsPage },

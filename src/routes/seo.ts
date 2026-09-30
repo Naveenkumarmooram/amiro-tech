@@ -2,6 +2,7 @@ import { office } from './office'
 
 export const siteUrl = 'https://www.amirotechsolutions.com'
 export const pageSeo = [
+  { path: '/careers', title: 'Careers | Developer & QA Jobs | Amiro Tech Solutions', description: 'Explore 5 hybrid vacancies in Bengaluru at Amiro Tech Solutions: 2 Python Developers, 2 Full Stack Developers and 1 Software Tester / QA.' },
   { path: '/', title: 'Amiro Tech Solutions | Software Development & AI Services', description: 'Amiro Tech Solutions is a Bangalore-based software and AI company building custom applications, Voice AI, automation and cloud platforms for businesses worldwide.' },
   { path: '/services', title: 'Software, AI & Cloud Services | Amiro Tech Solutions', description: 'Explore custom software development, enterprise AI, Voice AI, workflow automation, cloud engineering and system integrations from Amiro Tech Solutions.' },
   { path: '/products', title: 'Business Software Products | Amiro Tech Solutions', description: 'Explore Amiro Tech Solutions products for inventory and compliance management, plus upcoming HR, Voice AI and business operations platforms.' },

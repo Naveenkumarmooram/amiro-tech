@@ -1,4 +1,5 @@
 export { AboutPage } from './AboutPage'
+export { CareersPage } from './CareersPage'
 export { CaseStudiesPage } from './CaseStudiesPage'
 export { ContactPage } from './ContactPage'
 export { HomePage } from './HomePage'

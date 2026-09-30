@@ -4,7 +4,7 @@ import { office } from '../../routes/office'
 type FooterLink = { href: string; label: string }
 type FooterProps = { brand?: string; className?: string; links?: FooterLink[] }
 
-const defaultLinks = [{ href: '/', label: 'Home' }, { href: '/services', label: 'Services' }, { href: '/products', label: 'Products' }, { href: '/about', label: 'About' }, { href: '/contact', label: 'Contact' }]
+const defaultLinks = [{ href: '/', label: 'Home' }, { href: '/services', label: 'Services' }, { href: '/products', label: 'Products' }, { href: '/about', label: 'About' }, { href: '/careers', label: 'Careers' }, { href: '/contact', label: 'Contact' }]
 const productLinks = [{ href: '/products', label: 'IMS for NDT Labs' }, { href: '/products', label: 'HR Management System' }, { href: '/products', label: 'Voice AI Agent Platform' }, { href: '/products', label: 'Business Operations Platform' }]
 const serviceLinks = [{ href: '/services', label: 'Custom Software' }, { href: '/services', label: 'AI Solutions' }, { href: '/services', label: 'Voice AI' }, { href: '/services', label: 'Automation & Integration' }]
 const socialLinks = [

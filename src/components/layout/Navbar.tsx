@@ -18,6 +18,7 @@ const defaultItems: NavItem[] = [
   { href: '/services', label: 'Services' },
   { href: '/products', label: 'Products' },
   { href: '/about', label: 'About' },
+  { href: '/careers', label: 'Careers' },
   { href: '/contact', label: 'Contact' },
 ]
 

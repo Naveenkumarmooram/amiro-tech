@@ -5,6 +5,7 @@ import '../styles/polish.css'
 import '../styles/responsive.css'
 import '../styles/hero-rotation.css'
 import '../styles/refinement.css'
+import '../styles/careers.css'
 import App from './App'
 
 createRoot(document.getElementById('root')!).render(

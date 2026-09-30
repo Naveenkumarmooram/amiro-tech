@@ -3,7 +3,7 @@ import console from 'node:console'
 import { readFile } from 'node:fs/promises'
 
 const origin = 'https://www.amirotechsolutions.com'
-const paths = ['', 'services', 'products', 'about', 'process', 'case-studies', 'contact']
+const paths = ['', 'services', 'products', 'about', 'process', 'case-studies', 'contact', 'careers']
 const titles = new Set()
 for (const path of paths) {
   const html = await readFile(`dist/${path || 'index'}.html`, 'utf8')
@@ -25,4 +25,4 @@ const sitemap = await readFile('dist/sitemap.xml', 'utf8')
 for (const path of paths) assert(sitemap.includes(`<loc>${origin}/${path}</loc>`))
 assert((await readFile('dist/robots.txt', 'utf8')).includes(`Sitemap: ${origin}/sitemap.xml`))
 assert((await readFile('dist/404.html', 'utf8')).includes('content="noindex, follow"'))
-console.log('SEO checks passed: seven rendered pages, unique titles, canonical URLs, schema, sitemap, robots and noindex 404.')
+console.log('SEO checks passed: eight rendered pages, unique titles, canonical URLs, schema, sitemap, robots and noindex 404.')
