@@ -1,0 +1,15 @@
+.policy-page { padding: 64px 0; color: #bfc2cc; background: #0c0d10; }
+.policy-page header { max-width: 780px; margin-bottom: 48px; }
+.policy-eyebrow { color: #eeb900; text-transform: uppercase; letter-spacing: .12em; font-size: 12px; }
+.policy-page h1 { color: #f4f4f5; font-size: clamp(32px, 4vw, 52px); line-height: 1.15; margin: 16px 0 24px; }
+.policy-page p { line-height: 1.85; }
+.policy-page small { color: #aaa; }
+.policy-layout { display: grid; grid-template-columns: 240px minmax(0, 760px); gap: 64px; }
+.policy-layout nav { display: flex; flex-direction: column; gap: 16px; align-self: start; font-size: 14px; }
+.policy-page a { color: #eeb900; overflow-wrap: anywhere; }
+.policy-page a:focus-visible { outline: 2px solid #eeb900; outline-offset: 4px; }
+.policy-layout section { scroll-margin-top: 120px; padding: 0 0 28px; margin-bottom: 28px; border-bottom: 1px solid #ffffff18; }
+.policy-page h2 { color: #eee; font-size: 23px; line-height: 1.3; }
+.policy-related, .footer__legal { display: flex; flex-wrap: wrap; gap: 16px 24px; font-size: 13px; }
+.footer__legal { padding-top: 20px; border-top: 1px solid #ffffff12; }
+@media(max-width:767px) { .policy-page { padding: 36px 0; } .policy-layout { grid-template-columns: 1fr; gap: 36px; } .policy-layout nav { padding-bottom: 24px; border-bottom: 1px solid #ffffff18; } }

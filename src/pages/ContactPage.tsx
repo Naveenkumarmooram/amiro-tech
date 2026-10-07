@@ -297,6 +297,7 @@ export function ContactPage() {
                   </p>
                   <details className="contact-form__privacy" id="enquiry-privacy">
                     <summary>How your enquiry details are used</summary>
+                    <p>Read our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-and-conditions">website terms</a>.</p>
                     <p>This form prepares or sends your contact details and message to Amiro Tech Solutions Pvt Ltd to respond to your enquiry. Direct submissions pass through our email delivery provider. Please do not include passwords, payment information, or confidential project data. For questions about your information, contact <a href="mailto:info@amirotechsolutions.com">info@amirotechsolutions.com</a>.</p>
                   </details>
                 </form>

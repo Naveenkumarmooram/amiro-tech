@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react'
 import { PageLayout } from '../components/layout'
+import { PrivacyPolicyPage, TermsPage, CookiePolicyPage } from '../pages/LegalPages'
 import {
   AboutPage,
   CareersPage,
@@ -14,6 +15,9 @@ import {
 import { pageSeo, siteUrl } from './seo'
 
 const routes = [
+  { path: '/privacy-policy', Component: PrivacyPolicyPage },
+  { path: '/terms-and-conditions', Component: TermsPage },
+  { path: '/cookie-policy', Component: CookiePolicyPage },
   { path: '/careers', Component: CareersPage },
   { path: '/', Component: HomePage },
   { path: '/services', Component: ServicesPage },

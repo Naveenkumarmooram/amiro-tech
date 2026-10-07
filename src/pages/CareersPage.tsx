@@ -116,6 +116,7 @@ export function CareersPage() {
           </details>
           <p className="careers-apply-panel__hint">Choose your email service to compose in a new browser tab. You may need to sign in. Attach your resume, review, and send. If a draft does not appear after sign-in, copy the details above into a new email. No application is sent automatically.</p>
           <p role="status">{copyStatus}</p>
+          <p className="careers-apply-panel__hint">Read our <a href="/privacy-policy">Privacy Policy</a> for information about application data.</p>
         </section>}
         <details className="careers-details"><summary>View role details</summary><div><h4>What you’ll work on</h4><ul>{role.responsibilities.map(item => <li key={item}>{item}</li>)}</ul><h4>What you’ll bring</h4><ul>{role.requirements.map(item => <li key={item}>{item}</li>)}</ul></div></details>
       </article>)}</div>

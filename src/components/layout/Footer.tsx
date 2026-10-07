@@ -29,6 +29,7 @@ export function Footer({ brand = 'Amiro Tech Solutions Pvt Ltd', className, link
       <LinkGroup label="Services" links={serviceLinks}/>
       <div className="footer-premium__combined"><LinkGroup label="Products" links={productLinks}/><div className="footer__group footer-premium__contact"><p className="footer__group-title">Contact</p><div className="footer__links"><a className="footer__link footer-premium__email" href="mailto:info@amirotechsolutions.com">info@amirotechsolutions.com</a><a className="footer__link footer-premium__call" href="/contact?type=consultation">Book a Strategy Call <span>→</span></a></div><div className="footer__links footer__links--social" aria-label="Social channels">{socialLinks.map(({ label, href }) => <a className="footer__link" href={href} target="_blank" rel="noopener noreferrer" key={label}><SocialIcon name={label}/>{label}</a>)}</div></div></div>
     </div>
+    <nav className="footer__legal" aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-and-conditions">Terms & Conditions</a><a href="/cookie-policy">Cookies & External Services</a></nav>
     <div className="footer__bottom"><p>© 2026 {office.companyName}. All rights reserved.</p><span>Enterprise software · AI · Automation</span></div>
   </div></Container></footer>
 }

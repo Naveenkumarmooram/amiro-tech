@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '../styles/index.css'
+import '../styles/legal.css'
 import '../styles/polish.css'
 import '../styles/responsive.css'
 import '../styles/hero-rotation.css'
