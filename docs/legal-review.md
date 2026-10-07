@@ -1,5 +1,7 @@
 # Required review before adopting website policies
 
+Editorial reference review (7 October 2026): Netguru https://www.netguru.com/tou and Thoughtworks https://www.thoughtworks.com/en-au/about-us/privacy-policy informed section organization and navigation only. Their company-specific legal bases, retention promises, and jurisdictions were not copied. The Amiro pages retain draft status until the confirmations below are complete.
+
 The three legal pages are draft website notices, not a legal compliance certification. They are visibly marked pending company review. Do not remove that status or publish as final until the owner and a qualified legal reviewer approve them.
 
 Confirm:
